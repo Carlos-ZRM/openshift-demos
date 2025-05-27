@@ -1,0 +1,17 @@
+# Default values for git-clone.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+pvc:
+  accessMode: ReadWriteOnce
+  size: 1Gi
+  storageClassName: ""
+
+git:
+  hostname: your.git.host
+  user: your-username
+  pass: your-password
+  revision: main
+  verbose: true
+  sslVerify: true
+

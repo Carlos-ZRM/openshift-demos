@@ -1,0 +1,17 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: {{ include "nginx-from-git.fullname" . }}-route
+spec:
+  path: {{ .Values.route.path }}
+  to:
+    name: {{ include "nginx-from-git.fullname" . }}-svc
+    weight: {{ .Values.route.to.weight }}
+    kind: Service
+  host: {{ .Values.route.host | quote }}
+  tls:
+    insecureEdgeTerminationPolicy: {{ .Values.route.tls.insecureEdgeTerminationPolicy }}
+    termination: {{ .Values.route.tls.termination }}
+  port:
+    targetPort: http
+  alternateBackends: {{ .Values.route.alternateBackends | default "[]" }}

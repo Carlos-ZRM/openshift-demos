@@ -1,0 +1,13 @@
+{{- if eq .Values.git.authType "basic" }}
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ include "nginx-from-git.fullname" . }}-https-auth
+type: Opaque
+stringData:
+  .gitconfig: |
+    [credential "{{ .Values.git.hostname }}"]
+      helper = store
+  .git-credentials: |
+    https://myuser:mypass@{{ .Values.git.hostname | trimPrefix "https://" }}
+{{- end }}

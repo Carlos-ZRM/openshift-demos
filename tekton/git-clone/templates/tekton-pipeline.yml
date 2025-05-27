@@ -1,0 +1,78 @@
+apiVersion: tekton.dev/v1
+kind: Pipeline
+metadata:
+  name: {{ include "git-clone.fullname" . }}-pipeline-clone
+  labels:
+    {{- include "git-clone.labels" . | nindent 4 }}
+spec:
+  params:
+    - description: Git url
+      name: git-host
+      default: {{ .Values.git.hostname | quote }}
+      type: string
+    - default: {{ .Values.git.revision | quote }}
+      description: 'Revision to checkout, an branch, tag, sha, ref, etc'
+      name: git-revision
+      type: string
+    - default: {{ .Values.git.verbose | quote }}
+      description: Verbose mode
+      name: git-verbose
+      type: string
+    - default: {{ .Values.git.sslVerify | quote }}
+      name: git-ssl-verify
+      type: string
+  tasks:
+    - name: git-clone-1-18-0
+      params:
+        - name: CRT_FILENAME
+          value: ca-bundle.crt
+        - name: HTTP_PROXY
+          value: ''
+        - name: HTTPS_PROXY
+          value: ''
+        - name: NO_PROXY
+          value: ''
+        - name: SUBDIRECTORY
+          value: ''
+        - name: USER_HOME
+          value: /home/git
+        - name: DELETE_EXISTING
+          value: 'true'
+        - name: VERBOSE
+          value: $(params.git-verbose)
+        - name: SSL_VERIFY
+          value: $(params.git-ssl-verify)
+        - name: URL
+          value: $(params.git-host)
+        - name: REVISION
+          value: $(params.git-revision)
+        - name: REFSPEC
+          value: ''
+        - name: SUBMODULES
+          value: 'true'
+        - name: DEPTH
+          value: '1'
+        - name: SPARSE_CHECKOUT_DIRECTORIES
+          value: ''
+      taskRef:
+        params:
+          - name: kind
+            value: task
+          - name: name
+            value: git-clone-1-18-0
+          - name: namespace
+            value: openshift-pipelines
+        resolver: cluster
+      workspaces:
+        - name: output
+          workspace: git-clone
+        - name: basic-auth
+          workspace: git-user-creds
+        - name: ssh-directory
+          workspace: git-ssh-creds
+  workspaces:
+    - name: git-clone
+    - name: git-user-creds
+      optional: true
+    - name: git-ssh-creds
+      optional: true
