@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sope-static
+  namespace: openshift-gitops
+spec:
+  destination:
+    namespace: gitlab
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    helm:
+      parameters:
+      - name: git.hostname
+        value: https://gitlab.com/xpk/webstatic-app-code.git
+      - name: pvc.size
+        value: 5Gi
+      - name: replicaCount
+        value: "2"
+      - name: service.port
+        value: "8080"
+    path: tekton/nginx-from-git
+    repoURL: https://gitlab.com/xpk/openshift-apps.git
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
