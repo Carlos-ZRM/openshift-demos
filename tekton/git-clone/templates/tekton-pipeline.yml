@@ -22,7 +22,7 @@ spec:
       name: git-ssl-verify
       type: string
   tasks:
-    - name: git-clone-1-18-0
+    - name: git-clone
       params:
         - name: CRT_FILENAME
           value: ca-bundle.crt
@@ -59,7 +59,7 @@ spec:
           - name: kind
             value: task
           - name: name
-            value: git-clone-1-18-0
+            value: git-clone
           - name: namespace
             value: openshift-pipelines
         resolver: cluster
