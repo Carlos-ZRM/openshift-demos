@@ -1,0 +1,19 @@
+# Default values for git-clone.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+pvc:
+  accessMode: ReadWriteOnce
+  size: 5Gi
+  storageClassName: ""
+
+git:
+  hostname: https://gitlab.com/xpk/python-app-code.git
+  authType: basic
+  idRsa: |
+    -----
+  revision: dev
+  verbose: true
+  sslVerify: true
+
+# glpat-8gXxdWBVz7a6AjA92Chv

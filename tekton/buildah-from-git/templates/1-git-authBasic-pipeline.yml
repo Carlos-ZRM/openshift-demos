@@ -1,0 +1,43 @@
+{{- /*
+  Template for creating an immutable Kubernetes Secret.
+  - Creates the Secret only if it doesn't exist and during 'helm install'.
+  - If created by Helm, it gets 'helm.sh/resource-policy: keep'.
+  - On 'helm upgrade', if the Secret exists, this template renders nothing for it,
+    preventing Helm from trying to update or delete it (due to the 'keep' policy).
+*/}}
+
+
+{{- $baseFullname := include "buildah-from-git.fullname" . -}}
+{{- $httpsBaseFullname := printf "%s-https-auth" $baseFullname -}}
+
+
+{{- if eq .Values.git.authType "basic" }}
+
+{{- $existingSecret := lookup "v1" "Secret" .Release.Namespace $httpsBaseFullname -}}
+
+
+{{- /* Logic: Only proceed if the secret does not exist AND this is a fresh install */}}
+{{- if not $existingSecret }}
+  {{- if .Release.IsInstall }}
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ include "buildah-from-git.fullname" . }}-https-auth
+  labels:
+    {{- include "buildah-from-git.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/resource-policy": keep
+    "helm.sh/hook-delete-policy": "before-hook-creation" 
+type: Opaque
+stringData:
+  .gitconfig: |
+    [credential "{{ .Values.git.hostname }}"]
+      helper = store
+  .git-credentials: |
+    https://myuser:mypass@{{ .Values.git.hostname | trimPrefix "https://" }}
+
+{{- end }}
+{{- end }}
+
+{{- end }}
