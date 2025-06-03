@@ -1,0 +1,22 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: dr-example-vs
+  labels:
+    app: vs-destination-rule
+spec:
+  hosts:
+  - "*"
+  gateways:
+  -  dr-example-gw
+  http:
+  - route:
+    - destination:
+        host: vs-destination-rule-svc
+        subset: v2
+      weight: 10
+    - destination:
+        host: vs-destination-rule-svc
+        subset: v2
+      weight: 90
+

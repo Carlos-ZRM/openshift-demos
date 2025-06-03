@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name:  vs-destination-rule-dr
+  labels:
+    app: vs-destination-rule
+spec:
+  host: vs-destination-rule-svc
+  trafficPolicy:
+    loadBalancer:
+      simple: RANDOM
+  subsets:
+  - name: v1
+    labels:
+      deployment: vs-destination-rule-v1
+  - name: v2
+    labels:
+      deployment: vs-destination-rule-v2

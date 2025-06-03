@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vs-destination-rule-v2
+  namespace: 0-vs
+  labels:
+    app: vs-destination-rule
+    deployment: vs-destination-rule-v2
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: vs-destination-rule
+      deployment: vs-destination-rule-v2
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
+      creationTimestamp: null
+      labels:
+        app: vs-destination-rule
+        deployment: vs-destination-rule-v2
+    spec:
+      containers:
+      - env:
+        - name: PRIMARY_COLOR
+          value: 00FFFF
+        - name: SECONDARY_COLOR
+          value: ADFF2F
+        image: image-registry.openshift-image-registry.svc:5000/xpk/app-base@sha256:c5ad2a167f9c7fd98aa48997647e3ab0ddba6dfd8a86b3fdef68ba83fd73bf36
+        imagePullPolicy: IfNotPresent
+        name: vs-destination-rule-v2
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

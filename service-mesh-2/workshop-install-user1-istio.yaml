@@ -1,0 +1,644 @@
+apiVersion: maistra.io/v2
+kind: ServiceMeshControlPlane
+metadata:
+  creationTimestamp: "2025-06-02T08:06:19Z"
+  finalizers:
+  - maistra.io/istio-operator
+  generation: 2
+  name: workshop-install
+  namespace: user1-istio
+  resourceVersion: "369446"
+  uid: 1e3d4276-55b2-4a9b-bdbb-6ce7024930e5
+spec:
+  addons:
+    grafana:
+      enabled: true
+    jaeger:
+      name: jaeger
+    kiali:
+      enabled: true
+      name: kiali
+    prometheus:
+      enabled: true
+  profiles:
+  - default
+  proxy:
+    networking:
+      trafficControl:
+        inbound: {}
+        outbound:
+          policy: REGISTRY_ONLY
+  tracing:
+    sampling: 10000
+    type: Jaeger
+  version: v2.4
+status:
+  annotations:
+    alwaysReadyComponents: mesh-config,telemetry-common,tracing,kiali
+    readyComponentCount: 9/9
+  appliedSpec:
+    addons:
+      grafana:
+        enabled: true
+        install:
+          service:
+            ingress:
+              enabled: true
+            metadata:
+              annotations:
+                service.alpha.openshift.io/serving-cert-secret-name: grafana-tls
+      jaeger:
+        install:
+          ingress:
+            enabled: true
+          storage:
+            type: Memory
+        name: jaeger
+      kiali:
+        enabled: true
+        install:
+          dashboard:
+            viewOnly: false
+          service:
+            ingress:
+              enabled: true
+        name: kiali
+      prometheus:
+        enabled: true
+        install:
+          service:
+            ingress:
+              enabled: true
+            metadata:
+              annotations:
+                service.alpha.openshift.io/serving-cert-secret-name: prometheus-tls
+    gateways:
+      egress:
+        enabled: true
+        runtime:
+          container:
+            resources:
+              requests:
+                cpu: 10m
+                memory: 128Mi
+          deployment:
+            autoScaling:
+              enabled: false
+        service: {}
+      enabled: true
+      ingress:
+        enabled: true
+        ingress: false
+        runtime:
+          container:
+            resources:
+              requests:
+                cpu: 10m
+                memory: 128Mi
+          deployment:
+            autoScaling:
+              enabled: false
+        service:
+          type: ClusterIP
+      openshiftRoute:
+        enabled: true
+    general:
+      logging:
+        componentLevels:
+          default: warn
+    policy:
+      type: None
+    profiles:
+    - default
+    proxy:
+      injection:
+        autoInject: false
+      networking:
+        dns:
+          refreshRate: 300s
+        initialization:
+          initContainer:
+            runtime:
+              imageName: proxy-init-rhel7
+        protocol:
+          autoDetect:
+            inbound: false
+            outbound: false
+        trafficControl:
+          inbound: {}
+          outbound:
+            policy: REGISTRY_ONLY
+      runtime:
+        container:
+          imageName: registry.redhat.io/openshift-service-mesh/proxyv2-rhel8@sha256:d95762c62087072cadee5948c706619f09202a349e1310f0ed81bfb42f11203f
+          resources:
+            requests:
+              cpu: 10m
+              memory: 128Mi
+    runtime:
+      components:
+        3scale:
+          container:
+            imageRegistry: registry.redhat.io/openshift-service-mesh
+            imageTag: 2.0.0
+        global.oauthproxy:
+          container:
+            imageName: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:54d4aad34cc4bbcc900c670cb334cdc8584390fa662243d27b9d7f5b55f6a263
+            imagePullPolicy: IfNotPresent
+            imageRegistry: registry.redhat.io/openshift4
+            imageTag: v4.9
+        grafana:
+          container:
+            imageName: registry.redhat.io/openshift-service-mesh/grafana-rhel8@sha256:6fb7d50b188dc27ffb9a396edabbfb21767fe438344fd70d4754d1ec7cf27957
+        pilot:
+          container:
+            imageName: registry.redhat.io/openshift-service-mesh/pilot-rhel8@sha256:1ca80927334c6af8e386de8d44704f568b4b35d3f7afbe785a999d0fa4efd0bf
+            resources:
+              requests:
+                cpu: 10m
+                memory: 128Mi
+          deployment:
+            autoScaling:
+              enabled: false
+        prometheus:
+          container:
+            imageName: registry.redhat.io/openshift4/ose-prometheus@sha256:31c44f5e16b96eb555819312bd2fa261d89b050d7f78e8fad880d7bf05cc5a27
+            resources:
+              requests:
+                cpu: 10m
+                memory: 128Mi
+        rateLimiting.rls:
+          container:
+            imageName: registry.redhat.io/openshift-service-mesh/ratelimit-rhel8@sha256:515c5d9e6700fae981b0ea3807436b250acb1534e9ecf50043e5df8474e66dce
+      defaults:
+        container:
+          imageRegistry: registry.redhat.io/openshift-service-mesh
+          imageTag: 2.4.0
+          resources:
+            requests:
+              cpu: 10m
+              memory: 128Mi
+        deployment:
+          podDisruption:
+            enabled: false
+    security:
+      identity:
+        type: Kubernetes
+    techPreview:
+      global:
+        configNamespace: user1-istio
+        configRootNamespace: user1-istio
+        istioNamespace: user1-istio
+        prometheusNamespace: user1-istio
+      istio_cni:
+        istio_cni_network: v2-4-istio-cni
+      kiali:
+        install: true
+      meshConfig:
+        defaultConfig:
+          tracing:
+            zipkin:
+              address: jaeger-collector.user1-istio.svc:9411
+        ingressControllerMode: "OFF"
+        rootNamespace: user1-istio
+      prometheus:
+        scrapingNamespaces: []
+      prometheusConfigReloader:
+        image: registry.redhat.io/openshift4/ose-prometheus-config-reloader@sha256:ca2d7f8007c1b058a691b594b60dd0ad9401da7e71545d3b636aa4064c71967b
+      revision: workshop-install
+      sidecarInjectorWebhook:
+        objectSelector:
+          enabled: false
+      tracing:
+        jaeger:
+          install: true
+    telemetry:
+      type: Istiod
+    tracing:
+      sampling: 10000
+      type: Jaeger
+    version: v2.4
+  appliedValues:
+    istio:
+      base:
+        validationURL: ""
+      clusterResources: true
+      gatewayAPI:
+        controllerMode: false
+        enabled: false
+      gateways:
+        enabled: true
+        istio-egressgateway:
+          autoscaleEnabled: false
+          enabled: true
+          gatewayType: egress
+          name: istio-egressgateway
+          resources:
+            requests:
+              cpu: 10m
+              memory: 128Mi
+        istio-ingressgateway:
+          autoscaleEnabled: false
+          enabled: true
+          gatewayType: ingress
+          ior_enabled: true
+          name: istio-ingressgateway
+          resources:
+            requests:
+              cpu: 10m
+              memory: 128Mi
+          type: ClusterIP
+      global:
+        arch:
+          amd64: 2
+          arm64: 2
+          ppc64le: 2
+          s390x: 2
+        caAddress: ""
+        caCertConfigMapName: istio-ca-root-cert
+        centralIstiod: false
+        configNamespace: user1-istio
+        configRootNamespace: user1-istio
+        configValidation: true
+        defaultConfigVisibilitySettings: []
+        defaultNodeSelector: {}
+        defaultPodDisruptionBudget:
+          enabled: false
+        defaultResources:
+          requests:
+            cpu: 10m
+            memory: 128Mi
+        defaultTolerations: []
+        enableTracing: true
+        externalIstiod: false
+        hub: registry.redhat.io/openshift-service-mesh
+        imagePullPolicy: ""
+        imagePullSecrets: []
+        istioNamespace: user1-istio
+        istiod:
+          enableAnalysis: false
+        jwtPolicy: first-party-jwt
+        k8sIngress:
+          enableHttps: false
+          enabled: false
+          gatewayName: ingressgateway
+        logAsJson: false
+        logging:
+          level: default:warn
+        manageNetworkPolicy: true
+        meshExpansion:
+          enabled: false
+          useILB: false
+        meshID: ""
+        meshNetworks: {}
+        mountMtlsCerts: false
+        mtls:
+          auto: true
+          enabled: false
+        multiCluster:
+          clusterName: ""
+          enabled: false
+          globalDomainSuffix: global
+          includeEnvoyFilter: true
+          multiClusterOverrides:
+            expansionEnabled: null
+            multiClusterEnabled: null
+        network: ""
+        oauthproxy:
+          hub: registry.redhat.io/openshift4
+          image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:54d4aad34cc4bbcc900c670cb334cdc8584390fa662243d27b9d7f5b55f6a263
+          imagePullPolicy: IfNotPresent
+          tag: v4.9
+        omitSidecarInjectorConfigMap: false
+        oneNamespace: false
+        operatorManageWebhooks: false
+        outboundTrafficPolicy:
+          mode: REGISTRY_ONLY
+        pilotCertProvider: istiod
+        priorityClassName: ""
+        prometheusNamespace: user1-istio
+        proxy:
+          autoInject: disabled
+          clusterDomain: cluster.local
+          componentLogLevel: misc:error
+          dnsRefreshRate: 300s
+          enableCoreDump: false
+          excludeIPRanges: ""
+          excludeInboundPorts: ""
+          excludeOutboundPorts: ""
+          image: registry.redhat.io/openshift-service-mesh/proxyv2-rhel8@sha256:d95762c62087072cadee5948c706619f09202a349e1310f0ed81bfb42f11203f
+          includeIPRanges: '*'
+          includeInboundPorts: '*'
+          logLevel: warning
+          privileged: false
+          readinessFailureThreshold: 30
+          readinessInitialDelaySeconds: 1
+          readinessPeriodSeconds: 2
+          resources:
+            limits:
+              cpu: 2000m
+              memory: 1024Mi
+            requests:
+              cpu: 10m
+              memory: 128Mi
+          statusPort: 15021
+          tracer: zipkin
+        proxy_init:
+          image: proxy-init-rhel7
+          resources:
+            limits:
+              cpu: 2000m
+              memory: 1024Mi
+            requests:
+              cpu: 10m
+              memory: 10Mi
+        remotePilotAddress: ""
+        sds:
+          token:
+            aud: istio-ca
+        sts:
+          servicePort: 0
+        tag: 2.4.0
+        tls:
+          cipherSuites: []
+          ecdhCurves: []
+          maxProtocolVersion: ""
+          minProtocolVersion: ""
+        tracer:
+          datadog:
+            address: $(HOST_IP):8126
+          lightstep:
+            accessToken: ""
+            address: ""
+          stackdriver:
+            debug: false
+            maxNumberOfAnnotations: 200
+            maxNumberOfAttributes: 200
+            maxNumberOfMessageEvents: 200
+          zipkin:
+            address: ""
+        trustDomain: ""
+        useMCP: false
+      grafana:
+        enabled: true
+        image: registry.redhat.io/openshift-service-mesh/grafana-rhel8@sha256:6fb7d50b188dc27ffb9a396edabbfb21767fe438344fd70d4754d1ec7cf27957
+        ingress:
+          enabled: true
+        service:
+          annotations:
+            service.alpha.openshift.io/serving-cert-secret-name: grafana-tls
+      istio_cni:
+        enabled: true
+        istio_cni_network: v2-4-istio-cni
+      kiali:
+        dashboard:
+          viewOnlyMode: false
+        enabled: true
+        ingress:
+          enabled: true
+        install: true
+        resourceName: kiali
+      meshConfig:
+        defaultConfig:
+          proxyMetadata:
+            ISTIO_META_DNS_AUTO_ALLOCATE: "true"
+            ISTIO_META_DNS_CAPTURE: "true"
+            PROXY_XDS_VIA_AGENT: "true"
+          tracing:
+            zipkin:
+              address: jaeger-collector.user1-istio.svc:9411
+        dnsRefreshRate: 300s
+        enablePrometheusMerge: true
+        enableTracing: true
+        ingressControllerMode: "OFF"
+        outboundTrafficPolicy:
+          mode: REGISTRY_ONLY
+        rootNamespace: user1-istio
+      mixer:
+        adapters:
+          prometheus:
+            enabled: true
+        policy:
+          enabled: false
+        telemetry:
+          enabled: false
+      pilot:
+        autoscaleEnabled: false
+        enableProtocolSniffingForInbound: false
+        enableProtocolSniffingForOutbound: false
+        image: registry.redhat.io/openshift-service-mesh/pilot-rhel8@sha256:1ca80927334c6af8e386de8d44704f568b4b35d3f7afbe785a999d0fa4efd0bf
+        resources:
+          requests:
+            cpu: 10m
+            memory: 128Mi
+        traceSampling: 100
+      policy:
+        implementation: None
+      prometheus:
+        enabled: true
+        image: registry.redhat.io/openshift4/ose-prometheus@sha256:31c44f5e16b96eb555819312bd2fa261d89b050d7f78e8fad880d7bf05cc5a27
+        ingress:
+          enabled: true
+        resources:
+          requests:
+            cpu: 10m
+            memory: 128Mi
+        scrapingNamespaces: []
+        service:
+          annotations:
+            service.alpha.openshift.io/serving-cert-secret-name: prometheus-tls
+      prometheusConfigReloader:
+        image: registry.redhat.io/openshift4/ose-prometheus-config-reloader@sha256:ca2d7f8007c1b058a691b594b60dd0ad9401da7e71545d3b636aa4064c71967b
+      rateLimiting:
+        rls:
+          image: registry.redhat.io/openshift-service-mesh/ratelimit-rhel8@sha256:515c5d9e6700fae981b0ea3807436b250acb1534e9ecf50043e5df8474e66dce
+      revision: workshop-install
+      sidecarInjectorWebhook:
+        enableNamespacesByDefault: false
+        objectSelector:
+          enabled: false
+      telemetry:
+        enabled: true
+        implementation: Istiod
+        v1:
+          enabled: false
+        v2:
+          accessLogPolicy:
+            enabled: false
+            logWindowDuration: 43200s
+          enabled: true
+          metadataExchange:
+            wasmEnabled: false
+          prometheus:
+            configOverride:
+              gateway: {}
+              inboundSidecar: {}
+              outboundSidecar: {}
+            enabled: true
+            wasmEnabled: false
+          stackdriver:
+            configOverride: {}
+            disableOutbound: false
+            enabled: false
+            logging: false
+            monitoring: false
+            topology: false
+      tracing:
+        enabled: true
+        ingress:
+          enabled: true
+        jaeger:
+          install: true
+          resourceName: jaeger
+          template: all-in-one
+        provider: jaeger
+    profiles:
+    - default
+    template: default
+    threeScale:
+      hub: registry.redhat.io/openshift-service-mesh
+      image: ""
+      tag: 2.0.0
+    version: v2.4
+  chartVersion: 2.4.15
+  components:
+  - conditions:
+    - lastTransitionTime: "2025-06-02T08:06:23Z"
+      message: Component installed successfully
+      reason: InstallSuccessful
+      status: "True"
+      type: Reconciled
+    - lastTransitionTime: "2025-06-02T08:06:23Z"
+      message: Component installed successfully
+      reason: InstallSuccessful
+      status: "True"
+      type: Installed
+    resource: istio-discovery
+  - conditions:
+    - lastTransitionTime: "2025-06-02T08:06:33Z"
+      message: Component installed successfully
+      reason: InstallSuccessful
+      status: "True"
+      type: Reconciled
+    - lastTransitionTime: "2025-06-02T08:06:33Z"
+      message: Component installed successfully
+      reason: InstallSuccessful
+      status: "True"
+      type: Installed
+    resource: mesh-config
+  - conditions:
+    - lastTransitionTime: "2025-06-02T08:06:33Z"
+      message: Component installed successfully
+      reason: InstallSuccessful
+      status: "True"
+      type: Reconciled
+    - lastTransitionTime: "2025-06-02T08:06:33Z"
+      message: Component installed successfully
+      reason: InstallSuccessful
+      status: "True"
+      type: Installed
+    resource: telemetry-common
+  - conditions:
+    - lastTransitionTime: "2025-06-02T08:06:34Z"
+      message: Component installed successfully
+      reason: InstallSuccessful
+      status: "True"
+      type: Reconciled
+    - lastTransitionTime: "2025-06-02T08:06:34Z"
+      message: Component installed successfully
+      reason: InstallSuccessful
+      status: "True"
+      type: Installed
+    resource: prometheus
+  - conditions:
+    - lastTransitionTime: "2025-06-02T08:07:07Z"
+      message: Component installed successfully
+      reason: InstallSuccessful
+      status: "True"
+      type: Reconciled
+    - lastTransitionTime: "2025-06-02T08:07:07Z"
+      message: Component installed successfully
+      reason: InstallSuccessful
+      status: "True"
+      type: Installed
+    resource: tracing
+  - conditions:
+    - lastTransitionTime: "2025-06-02T08:07:07Z"
+      message: Component installed successfully
+      reason: InstallSuccessful
+      status: "True"
+      type: Reconciled
+    - lastTransitionTime: "2025-06-02T08:07:07Z"
+      message: Component installed successfully
+      reason: InstallSuccessful
+      status: "True"
+      type: Installed
+    resource: istio-ingress
+  - conditions:
+    - lastTransitionTime: "2025-06-02T08:07:07Z"
+      message: Component installed successfully
+      reason: InstallSuccessful
+      status: "True"
+      type: Reconciled
+    - lastTransitionTime: "2025-06-02T08:07:07Z"
+      message: Component installed successfully
+      reason: InstallSuccessful
+      status: "True"
+      type: Installed
+    resource: istio-egress
+  - conditions:
+    - lastTransitionTime: "2025-06-02T08:07:08Z"
+      message: Component installed successfully
+      reason: InstallSuccessful
+      status: "True"
+      type: Reconciled
+    - lastTransitionTime: "2025-06-02T08:07:08Z"
+      message: Component installed successfully
+      reason: InstallSuccessful
+      status: "True"
+      type: Installed
+    resource: grafana
+  - conditions:
+    - lastTransitionTime: "2025-06-02T08:07:42Z"
+      message: Component installed successfully
+      reason: InstallSuccessful
+      status: "True"
+      type: Reconciled
+    - lastTransitionTime: "2025-06-02T08:07:42Z"
+      message: Component installed successfully
+      reason: InstallSuccessful
+      status: "True"
+      type: Installed
+    resource: kiali
+  conditions:
+  - lastTransitionTime: "2025-06-02T08:07:44Z"
+    message: Successfully installed all mesh components
+    reason: InstallSuccessful
+    status: "True"
+    type: Installed
+  - lastTransitionTime: "2025-06-02T08:07:44Z"
+    message: Successfully installed version 2.6.7-1-2
+    reason: InstallSuccessful
+    status: "True"
+    type: Reconciled
+  - lastTransitionTime: "2025-06-02T20:23:55Z"
+    message: All component deployments are Available
+    reason: ComponentsReady
+    status: "True"
+    type: Ready
+  observedGeneration: 2
+  operatorVersion: 2.6.7-1
+  readiness:
+    components:
+      pending: []
+      ready:
+      - grafana
+      - istio-discovery
+      - istio-egress
+      - istio-ingress
+      - kiali
+      - mesh-config
+      - prometheus
+      - telemetry-common
+      - tracing
+      unready: []

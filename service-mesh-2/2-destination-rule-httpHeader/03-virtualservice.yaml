@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  labels:
+    app: dr-path-rule-httpheader
+  name: dr-path-rule-httpheader-vs
+spec:
+  gateways:
+  - dr-path-rule-httpheader-gw
+  hosts:
+  - '*'
+  http:
+  - route:
+    - destination:
+        host: dr-path-rule-httpheader-svc
+        subset: cdmx
+      weight: 100
