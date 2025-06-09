@@ -21,6 +21,22 @@ spec:
     - default: {{ .Values.git.sslVerify | quote }}
       name: git-ssl-verify
       type: string
+    - name: img-registry
+      type: string
+      description: Refgistry fqdn
+      default: {{ include "buildah-from-git.fullRegistry" . | quote }}
+    - name: img-context
+      type: string
+      description: Directorio del archivo Dockerfile
+      default: {{ .Values.repository.gitPathContext | quote }}
+    - name: img-dockerfile
+      type: string
+      description: Nombre del archivo Dockerfile
+      default: {{ .Values.repository.gitDockerfile | quote }}
+    - name: registry-ssl-verify
+      type: string
+      description: SSL verification for the registry
+      default: {{ .Values.repository.sslVerify | quote }}
   tasks:
     - name: git-clone
       params:
@@ -70,9 +86,37 @@ spec:
           workspace: git-user-creds
         - name: ssh-directory
           workspace: git-ssh-creds
+    - name: buildah
+      runAfter:
+        - git-clone
+      params:
+        - name: IMAGE
+          value: $(params.img-registry)
+        - name: CONTEXT
+          value: /workspace/source/$(params.img-context)
+        - name: DOCKERFILE
+          value: $(params.img-dockerfile)
+        - name: TLSVERIFY
+          value: $(params.registry-ssl-verify)
+      workspaces:
+        - name: source
+          workspace: buildah-from-git
+        - name: dockerconfig
+          workspace: docker-config
+      taskRef:
+        params:
+          - name: kind
+            value: task
+          - name: name
+            value: buildah
+          - name: namespace
+            value: openshift-pipelines
+        resolver: cluster
   workspaces:
     - name: buildah-from-git
     - name: git-user-creds
       optional: true
     - name: git-ssh-creds
+      optional: true
+    - name: docker-config
       optional: true

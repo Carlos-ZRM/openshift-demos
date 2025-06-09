@@ -16,4 +16,10 @@ git:
   verbose: true
   sslVerify: true
 
+repository:
+  tag: latest
+  gitPathContext: /
+  gitDockerfile: Containerfile
+  sslVerify: false
+
 # glpat-8gXxdWBVz7a6AjA92Chv

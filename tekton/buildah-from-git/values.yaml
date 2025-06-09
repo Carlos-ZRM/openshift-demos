@@ -14,3 +14,10 @@ git:
   verbose: true
   sslVerify: true
 
+repository:
+  registryUrl: image-registry.openshift-image-registry.svc:5000
+  imageName: myname
+  tag: latest
+  gitPathContext: /
+  gitDockerfile: Containerfile
+  sslVerify: false
