@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: vs-circuit-breaker-vs
+  labels:
+    app: httpbin
+  namespace: circuit-breaker
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - vs-circuit-breaker
+  http:
+  - route:
+    - destination:
+        host: httpbin
+        port:
+          name: http-8080
+          number: 8080
