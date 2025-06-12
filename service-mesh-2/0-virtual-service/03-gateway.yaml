@@ -4,7 +4,7 @@ metadata:
   name:  vs-example-gw
   labels:
     app: vs-example
-  namespace: p
+  namespace: vs-example
 spec:
   selector:
     istio: ingressgateway
