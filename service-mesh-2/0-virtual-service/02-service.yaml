@@ -4,6 +4,7 @@ metadata:
   name: vs-example-svc
   labels:
     app: vs-example
+  namespace: vs-example
 spec:
   selector:
     app: vs-example

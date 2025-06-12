@@ -4,6 +4,7 @@ metadata:
   name:  vs-example-deploy
   labels:
     app:  vs-example
+  namespace: vs-example
 spec:
   selector:
     matchLabels:

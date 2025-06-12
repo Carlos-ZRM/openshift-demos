@@ -4,6 +4,7 @@ metadata:
   name: vs-example-vs
   labels:
     app: vs-example
+  namespace: vs-example
 spec:
   hosts:
   - "*"
