@@ -1,0 +1,47 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: deny-by-default
+  namespace: bar-demo
+spec:
+  podSelector: {}
+  ingress: []
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-from-openshift-ingress
+  namespace: bar-demo
+spec:
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          policy-group.network.openshift.io/ingress: ""
+  podSelector: {}
+  policyTypes:
+  - Ingress
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-http-and-https
+  namespace: bar-demo
+spec:
+  # This policy applies to pods with the label 'app=bar-app'
+  podSelector:
+    matchLabels:
+      app: bar-app
+  # This policy defines rules for Ingress (incoming) traffic
+  policyTypes:
+    - Ingress
+  ingress:
+    # This is the ingress rule block
+    - from:
+        # This allows traffic from pods in the same namespace.
+        # An empty podSelector selects all pods in the policy's namespace.
+        - podSelector: {}
+      ports:
+        # This specifies the allowed port and protocol
+        - protocol: TCP
+          port: 5000
