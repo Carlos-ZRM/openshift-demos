@@ -1,0 +1,30 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  labels:
+    app: vs-httpretry
+  name: vs-httpretry-vs
+  namespace: vs-httpretry
+spec:
+  gateways:
+  - gw
+  hosts:
+  - '*'
+  http:
+  - match:
+    - uri:
+        prefix: /rand_timeout
+    retries:
+      attempts: 10
+      perTryTimeout: 4s
+      retryOn: 504,503,gateway-error,connect-failure,refused-stream
+    route:
+    - destination:
+        host: vs-httpretry-svc
+        port:
+          number: 8080
+  - route:
+    - destination:
+        host: vs-httpretry-svc
+        port:
+          number: 8080

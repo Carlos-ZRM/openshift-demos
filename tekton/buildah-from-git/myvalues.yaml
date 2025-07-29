@@ -8,18 +8,20 @@ pvc:
   storageClassName: ""
 
 git:
-  hostname: https://gitlab.com/xpk/python-app-code.git
+  hostname: https://gitlab.com/xpk/python-horizontal-pod-autoscale.git
   authType: basic
   idRsa: |
     -----
-  revision: dev
+  revision: main
   verbose: true
   sslVerify: true
 
 repository:
   tag: latest
-  gitPathContext: /
-  gitDockerfile: Containerfile
+  gitPathContext: .
+  gitDockerfile: Dockerfile
   sslVerify: false
+  registryUrl: quay.io/rh-ee-creyesma/python-img-api:test-cpu-ram
 
 # glpat-8gXxdWBVz7a6AjA92Chv
+# ewogICJhdXRocyI6IHsKICAgICJxdWF5LmlvIjogewogICAgICAiYXV0aCI6ICJjbWd0WldVdFkzSmxlV1Z6YldFcmRYTmxjakV3TVRwRVYxVkJUVXhRUjA5VVYwb3hURWRLVjFveU1EY3lUa3d5UTBOSFVEWkxUVWRaV1ZGU1IwNVlPRXBJU3psSFRrdFJXbGhDUkVwTFVVcElVVEJJVXpaViIsCiAgICAgICJlbWFpbCI6ICIiCiAgICB9CiAgfQp9

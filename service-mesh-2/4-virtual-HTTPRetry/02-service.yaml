@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: vs-httpretry-svc
+  labels:
+    app: vs-httpretry
+  namespace: vs-httpretry
+spec:
+  selector:
+    app: vs-httpretry
+  type: ClusterIP
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  ports:
+  - name: http-8080
+    protocol: TCP
+    port: 8080
+    targetPort: 5000
+    # If you set the `spec.type` field to `NodePort` and you want a specific port number,
+    # you can specify a value in the `spec.ports[*].nodePort` field.

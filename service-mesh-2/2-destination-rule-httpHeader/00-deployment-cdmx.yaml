@@ -30,7 +30,7 @@ spec:
       containers:
       - env:
         - name: TZ
-          value: Asia/Mexico_City 
+          value: Americas/Mexico_City 
         - name: PRIMARY_COLOR
           value: FF00FF
         - name: SECONDARY_COLOR

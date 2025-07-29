@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  labels:
+    app: vs-httpretry
+  name: vs-httpretry-vs
+  namespace: vs-httpretry
+spec:
+  gateways:
+  - gw
+  hosts:
+  - '*'
+  http:
+  - route:
+    - destination:
+        host: vs-httpretry-svc
+        port:
+          number: 8080

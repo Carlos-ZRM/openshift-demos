@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../../../springboot2"
+		},
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../python-testing-cpu-ram"
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "interactive"
+	}
+}

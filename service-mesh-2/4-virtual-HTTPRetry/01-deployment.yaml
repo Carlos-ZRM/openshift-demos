@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  vs-httpretry-deploy
+  labels:
+    app:  vs-httpretry
+  namespace: vs-httpretry
+spec:
+  selector:
+    matchLabels:
+      app: vs-httpretry
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  vs-httpretry
+      annotations:
+        sidecar.istio.io/inject: "true"
+    spec:
+      # initContainers:
+        # Init containers are exactly like regular containers, except:
+          # - Init containers always run to completion.
+          # - Each init container must complete successfully before the next one starts.
+      containers:
+      - name:  vs-httpretry
+        image:  image-registry.openshift-image-registry.svc:5000/xpk/app-base:latest
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+          limits:
+            cpu: 100m
+            memory: 100Mi
+        env:
+          - name: PRIMARY_COLOR
+            value: FFD700
+          - name: SECONDARY_COLOR
+            value: 1A1A1A
+          - name: PROB_TIMEOUT
+            value: "0.70"
+        ports:
+        - containerPort:  5000
+          name:  python-app
+      restartPolicy: Always

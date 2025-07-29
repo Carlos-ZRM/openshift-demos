@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: rh-ee-creyesma-user101-pull-secret
+  name: {{ include "buildah-from-git.fullname" . }}-quay-pull-secret
 data:
   .dockerconfigjson: ewogICJhdXRocyI6IHsKICAgICJxdWF5LmlvIjogewogICAgICAiYXV0aCI6ICJ4eHh4IiwKICAgICAgImVtYWlsIjogIiIKICAgIH0KICB9Cn0K
 type: kubernetes.io/dockerconfigjson

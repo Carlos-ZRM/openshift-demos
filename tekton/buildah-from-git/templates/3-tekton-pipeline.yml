@@ -24,7 +24,7 @@ spec:
     - name: img-registry
       type: string
       description: Refgistry fqdn
-      default: {{ include "buildah-from-git.fullRegistry" . | quote }}
+      default: {{ .Values.repository.registryUrl | quote }}
     - name: img-context
       type: string
       description: Directorio del archivo Dockerfile

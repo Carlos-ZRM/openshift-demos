@@ -1,0 +1,96 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: foo-app
+    app.kubernetes.io/part-of: foo-app
+  name: foo-app
+  namespace: foo-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: foo-app
+  template:
+    metadata:
+      labels:
+        app: foo-app
+        deployment: foo-app
+    spec:
+      containers:
+      - env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: APP_LABEL
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.labels['app']
+        - name: SERVICE_NAME
+          value: foo-app
+        image: image-registry.openshift-image-registry.svc:5000/xpk/app-base-ns:latest
+        imagePullPolicy: IfNotPresent
+        name: foo-app
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 250m
+            memory: 256Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: foo-app
+    app.kubernetes.io/part-of: foo-app
+  name: foo-app
+  namespace: foo-demo
+spec:
+  ports:
+  - name: 5000-tcp
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: foo-app
+    deployment: foo-app
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: foo-app
+    app.kubernetes.io/part-of: foo-app
+  name: foo-app
+  namespace: foo-demo
+spec:
+  host: ""
+  port:
+    targetPort: 5000-tcp
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: foo-app
+    weight: 100
+  wildcardPolicy: None
+

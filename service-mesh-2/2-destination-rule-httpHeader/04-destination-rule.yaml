@@ -11,7 +11,7 @@ spec:
       deployment: dr-path-rule-httpheader-cdmx
     name: cdmx
   - labels:
-      deployment: dr-path-rule-httpheader-cdmx
+      deployment: dr-path-rule-httpheader-tj
     name: tj
   trafficPolicy:
     loadBalancer:

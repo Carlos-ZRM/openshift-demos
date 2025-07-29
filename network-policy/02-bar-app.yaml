@@ -1,0 +1,96 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: bar-app
+    app.kubernetes.io/part-of: bar-app
+  name: bar-app
+  namespace: bar-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bar-app
+  template:
+    metadata:
+      labels:
+        app: bar-app
+        deployment: bar-app
+    spec:
+      containers:
+      - env:
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: APP_LABEL
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.labels['app']
+        - name: SERVICE_NAME
+          value: bar-app
+        image: image-registry.openshift-image-registry.svc:5000/xpk/app-base-ns:latest
+        imagePullPolicy: IfNotPresent
+        name: bar-app
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 250m
+            memory: 256Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: bar-app
+    app.kubernetes.io/part-of: bar-app
+  name: bar-app
+  namespace: bar-demo
+spec:
+  ports:
+  - name: 5000-tcp
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: bar-app
+    deployment: bar-app
+  sessionAffinity: None
+  type: ClusterIP
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: bar-app
+    app.kubernetes.io/part-of: bar-app
+  name: bar-app
+  namespace: bar-demo
+spec:
+  host: ""
+  port:
+    targetPort: 5000-tcp
+  tls:
+    insecureEdgeTerminationPolicy: Redirect
+    termination: edge
+  to:
+    kind: Service
+    name: bar-app
+    weight: 100
+  wildcardPolicy: None
+
