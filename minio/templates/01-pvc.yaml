@@ -1,0 +1,14 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ include "minio.fullname" . }}-pvc
+  labels:
+    {{- include "minio.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - {{ .Values.minio_config.pvc.accessMode }}
+  resources:
+    requests:
+      storage: {{ .Values.minio_config.pvc.size }}
+  volumeMode: {{ .Values.minio_config.pvc.volumeMode }}
