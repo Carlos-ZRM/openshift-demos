@@ -1,0 +1,18 @@
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: {{ include "minio.fullname" . }}-route-ui
+  labels:
+    {{- include "minio.labels" . | nindent 4 }}
+spec:
+  to:
+    kind: Service
+    name: {{ include "minio.fullname" . }}-svc
+    weight: 100
+  port:
+    targetPort: ui
+  wildcardPolicy: None
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect

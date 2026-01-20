@@ -1,0 +1,30 @@
+auth:
+    psk:
+        iss:
+            - quay
+            - clairctl
+        key: MERLTmRlUTVXN1NJUTR0cjJ1WVhacnplTTRoeEF2MDM=
+http_listen_addr: :8080
+indexer:
+    connstring: host=demo-quay-tam-quay-registry-clair-postgres port=5432 dbname=postgres user=postgres password=postgres sslmode=disable pool_max_conns=33
+    layer_scan_concurrency: 5
+    migrations: true
+    scanlock_retry: 10
+log_level: info
+matcher:
+    connstring: host=demo-quay-tam-quay-registry-clair-postgres port=5432 dbname=postgres user=postgres password=postgres sslmode=disable pool_max_conns=33
+    migrations: true
+metrics:
+    name: prometheus
+notifier:
+    connstring: host=demo-quay-tam-quay-registry-clair-postgres port=5432 dbname=postgres user=postgres password=postgres sslmode=disable pool_max_conns=33
+    delivery_interval: 1m0s
+    migrations: true
+    poll_interval: 5m0s
+    webhook:
+        callback: http://demo-quay-tam-quay-registry-clair-app/notifier/api/v1/notifications
+        target: https://demo-quay-tam-quay-registry-quay-quay-poc.apps.cluster-547lr.547lr.sandbox2720.opentlc.com/secscan/notification
+updaters:
+    config:
+        rhel:
+            ignore_unpatched: true

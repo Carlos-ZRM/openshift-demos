@@ -1,0 +1,25 @@
+# Default values for quay-tam.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+
+minio_config:
+  pvc:
+    storageClassName: ""
+    accessMode: ReadWriteOnce
+    size: 40Gi
+    volumeMode: Filesystem
+  secret:
+    access_key: minio
+    secret_key: minio123.
+  resources:
+    limits:
+      cpu: 250m
+      memory: 1Gi
+    requests:
+      cpu: 20m
+      memory: 100Mi
+  bucket: quay-tam
+  region: us-east-1
+  use_ssl: "false"
+

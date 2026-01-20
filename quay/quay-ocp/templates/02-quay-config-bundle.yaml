@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ include "quay-tam.fullname" . }}-config-bundle
+  labels:
+    {{- include "quay-tam.labels" . | nindent 4 }}
+type: Opaque
+stringData:
+    config.yaml: |
+        ALLOW_PULLS_WITHOUT_STRICT_LOGGING: false
+        AUTHENTICATION_TYPE: Database
+        DEFAULT_TAG_EXPIRATION: 2w
+        FEATURE_BUILD_SUPPORT: false
+        FEATURE_DIRECT_LOGIN: true
+        FEATURE_MAILING: false
+        REGISTRY_TITLE: Red Hat Quay
+        REGISTRY_TITLE_SHORT: Red Hat Quay
+        SETUP_COMPLETE: true
+        TAG_EXPIRATION_OPTIONS:
+        - 2w
+        TEAM_RESYNC_STALE_TIME: 60m
+        TESTING: false
+        DISTRIBUTED_STORAGE_CONFIG:
+            s3Storage:
+                - S3Storage
+                - host: "{{ include "quay-tam.fullname" . }}-minio-svc.{{ .Release.Namespace }}.svc.cluster.local:9000"
+                  s3_access_key: {{ .Values.minio_config.secret.access_key }}
+                  s3_secret_key: {{ .Values.minio_config.secret.secret_key }}
+                  s3_bucket: quay
+                  s3_region: local
+                  storage_path: /datastorage/registry
+        DISTRIBUTED_STORAGE_DEFAULT_LOCATIONS: []
+        DISTRIBUTED_STORAGE_PREFERENCE:
+            - s3Storage
+        FEATURE_REPO_MIRROR: true

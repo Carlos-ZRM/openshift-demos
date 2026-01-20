@@ -1,0 +1,40 @@
+apiVersion: datasciencepipelinesapplications.opendatahub.io/v1
+kind: DataSciencePipelinesApplication
+metadata:
+  name: {{ include "minio.fullname" . }}-dspa
+  labels:
+    {{- include "minio.labels" . | nindent 4 }}
+spec:
+  apiServer:
+    deploy: true
+    enableSamplePipeline: false
+    enableOauth: true
+  database:
+    disableHealthCheck: false
+    mariaDB:
+      deploy: true
+      pipelineDBName: mlpipeline
+      pvcSize: 10Gi
+      username: mlpipeline
+  dspVersion: v2
+  objectStorage:
+    disableHealthCheck: false
+    enableExternalRoute: false
+    externalStorage:
+      basePath: ''
+      bucket: pipelines
+      #host: '{{ include "minio.fullname" . }}-svc.{{ .Release.Namespace }}.svc.cluster.local:9000'
+      host: "{{ .Values.minio_config.url_endpoint }}"
+      port: ''
+      region: us-east-1
+      s3CredentialsSecret:
+        accessKey: minio_root_user
+        secretKey: minio_root_password
+        secretName: {{ include "minio.fullname" . }}-secret
+      scheme: https
+  persistenceAgent:
+    deploy: true
+    numWorkers: 2
+  scheduledWorkflow:
+    cronScheduleTimezone: UTC
+    deploy: true

@@ -1,0 +1,181 @@
+ 
+apiVersion: observability.openshift.io/v1
+kind: ClusterLogForwarder
+metadata:
+  creationTimestamp: '2025-01-15T23:55:22Z'
+  generation: 13
+  managedFields:
+    - apiVersion: observability.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          .: {}
+          'f:filters':
+            .: {}
+            'k:{"name":"excluir-namespaces-sistema"}':
+              .: {}
+              'f:drop': {}
+              'f:name': {}
+              'f:type': {}
+            'k:{"name":"prueba"}':
+              .: {}
+              'f:name': {}
+              'f:prune':
+                .: {}
+                'f:in': {}
+                'f:notIn': {}
+              'f:type': {}
+            'k:{"name":"stack-trace-inline"}':
+              .: {}
+              'f:name': {}
+              'f:type': {}
+          'f:managementState': {}
+          'f:outputs':
+            .: {}
+            'k:{"name":"loki-insecure"}':
+              .: {}
+              'f:loki':
+                .: {}
+                'f:labelKeys': {}
+                'f:tenantKey': {}
+                'f:url': {}
+              'f:name': {}
+              'f:type': {}
+          'f:pipelines':
+            .: {}
+            'k:{"name":"application-logs"}':
+              .: {}
+              'f:filterRefs': {}
+              'f:inputRefs': {}
+              'f:name': {}
+              'f:outputRefs': {}
+          'f:serviceAccount':
+            .: {}
+            'f:name': {}
+      manager: Mozilla
+      operation: Update
+      time: '2025-08-07T21:07:09Z'
+    - apiVersion: observability.openshift.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          .: {}
+          'f:conditions': {}
+          'f:filterConditions': {}
+          'f:inputConditions': {}
+          'f:outputConditions': {}
+          'f:pipelineConditions': {}
+      manager: cluster-logging-operator
+      operation: Update
+      subresource: status
+      time: '2025-12-11T17:31:23Z'
+  name: logging
+  namespace: openshift-logging
+  resourceVersion: '843232615'
+  uid: 010a33da-92cc-40a1-a595-3c3208b3bbd9
+spec:
+  filters:
+    - drop:
+        - test:
+            - field: .kubernetes.namespace_name
+              matches: (openshift|kube|calico|ibm)-.*
+      name: excluir-namespaces-sistema
+      type: drop
+    - name: prueba
+      prune:
+        in:
+          - .kubernetes.annotations
+          - .kubernetes.container_id
+          - .kubernetes.container_image
+          - .kubernetes.container_image_id
+          - .kubernetes.container_iostream
+          - .kubernetes.labels
+          - .kubernetes.namespace_id
+          - .kubernetes.namespace_labels
+          - .kubernetes.pod_id
+          - .kubernetes.pod_ip
+          - .kubernetes.pod_owner
+        notIn:
+          - .kubernetes
+          - .log_source
+          - .log_type
+          - .message
+          - ."@timestamp"
+      type: prune
+    - name: stack-trace-inline
+      type: detectMultilineException
+  managementState: Managed
+  outputs:
+    - loki:
+        labelKeys:
+          - kubernetes.namespace_name
+          - kubernetes.pod_name
+          - kubernetes.container_name
+        tenantKey: kubernetes.namespace_name
+        url: 'http://192.168.196.12:3100'
+      name: loki-insecure
+      type: loki
+  pipelines:
+    - filterRefs:
+        - excluir-namespaces-sistema
+        - stack-trace-inline
+        - prueba
+      inputRefs:
+        - application
+      name: application-logs
+      outputRefs:
+        - loki-insecure
+  serviceAccount:
+    name: collector
+status:
+  conditions:
+    - lastTransitionTime: '2025-01-16T08:34:55Z'
+      message: 'permitted to collect log types: [application]'
+      reason: ClusterRolesExist
+      status: 'True'
+      type: observability.openshift.io/Authorized
+    - lastTransitionTime: '2025-08-07T17:38:59Z'
+      message: ''
+      reason: ValidationSuccess
+      status: 'True'
+      type: observability.openshift.io/Valid
+    - lastTransitionTime: '2025-01-16T08:35:01Z'
+      message: ''
+      reason: ReconciliationComplete
+      status: 'True'
+      type: Ready
+  filterConditions:
+    - lastTransitionTime: '2025-08-07T17:38:59Z'
+      message: filter "excluir-namespaces-sistema" is valid
+      reason: ValidationSuccess
+      status: 'True'
+      type: observability.openshift.io/ValidFilter-excluir-namespaces-sistema
+    - lastTransitionTime: '2025-02-21T19:03:58Z'
+      message: filter "prueba" is valid
+      reason: ValidationSuccess
+      status: 'True'
+      type: observability.openshift.io/ValidFilter-prueba
+    - lastTransitionTime: '2025-03-28T03:07:46Z'
+      message: filter "stack-trace-inline" is valid
+      reason: ValidationSuccess
+      status: 'True'
+      type: observability.openshift.io/ValidFilter-stack-trace-inline
+  inputConditions:
+    - lastTransitionTime: '2025-12-11T17:31:23Z'
+      message: input "application" is valid
+      reason: ValidationSuccess
+      status: 'True'
+      type: observability.openshift.io/ValidInput-application
+  outputConditions:
+    - lastTransitionTime: '2025-01-15T23:55:22Z'
+      message: output "loki-insecure" is valid
+      reason: ValidationSuccess
+      status: 'True'
+      type: observability.openshift.io/ValidOutput-loki-insecure
+  pipelineConditions:
+    - lastTransitionTime: '2025-01-15T23:55:22Z'
+      message: pipeline "application-logs" is valid
+      reason: ValidationSuccess
+      status: 'True'
+      type: observability.openshift.io/ValidPipeline-application-logs
+ 
