@@ -1,0 +1,24 @@
+apiVersion: loki.grafana.com/v1
+kind: LokiStack
+metadata:
+  name: {{ include "minio.fullname" . }}-logging-loki
+  namespace: {{ .Values.loki_config.namespace }}
+  labels:
+    {{- include "minio.labels" . | nindent 4 }}
+spec:
+  managementState: Managed
+  limits:
+    global: 
+      retention: 
+        days: {{ .Values.loki_config.retention_days }} # Set the value as per requirement
+  size: {{ .Values.loki_config.size }}
+  storage:
+    schemas:
+    - version: v13
+      effectiveDate: "2025-10-01" 
+    secret:
+      name: {{ include "minio.fullname" . }}-secret-loki
+      type: s3 
+  storageClassName: {{ .Values.loki_config.storage_class_name }}
+  tenants:
+    mode: {{ .Values.loki_config.tenants_mode }}

@@ -12,6 +12,7 @@ minio_config:
   secret:
     access_key: minio
     secret_key: minio123.
+    bucket_name: loki
   resources:
     limits:
       cpu: 250m
@@ -19,6 +20,26 @@ minio_config:
     requests:
       cpu: 20m
       memory: 100Mi
-  bucket: quay-tam
   region: us-east-1
   use_ssl: "false"
+
+loki_config:
+  version: "stable-6.4"
+  approval: "Automatic"
+  channel: stable
+  namespace: openshift-logging
+  storage_class_name: ""
+  retention_days: 20
+  size: 1x.pico
+  tenants_mode: openshift-logging
+  logs_types:
+    - application
+
+observability_config:
+  channel: cluster-observability-operator.v1.3.1
+  approval: "Automatic"
+  namespace: openshift-cluster-observability-operator
+
+
+ocp_config:
+  domain: cluster.local

@@ -1,3 +1,8 @@
+## Set domain into myvalues file
+
+~~~ bash
+sed -i '' "s|domain:.*|domain: $(oc get ingresscontroller default -n openshift-ingress-operator -o jsonpath='{.status.domain}')|" myvalues.yaml
+~~~
 ##  Create project
 
 ~~~ bash
@@ -17,5 +22,9 @@ cp values.yaml myvalues.yaml
 
 
 ~~~ bash
-helm install bucket .
+helm install loki i -f myvalues.yaml .
+~~~
+
+~~~ bash
+helm upgrade loki -f myvalues.yaml .
 ~~~

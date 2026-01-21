@@ -3,12 +3,14 @@ kind: Route
 apiVersion: route.openshift.io/v1
 metadata:
   name: {{ include "minio.fullname" . }}-route-ui
+  namespace: {{ .Values.loki_config.namespace }}
   labels:
     {{- include "minio.labels" . | nindent 4 }}
 spec:
+  host: {{ include "minio.fullname" . }}-ui.{{ .Values.ocp_config.domain }}
   to:
     kind: Service
-    name: {{ include "minio.fullname" . }}-svc
+    name: {{ include "minio.fullname" . }}-minio-svc
     weight: 100
   port:
     targetPort: ui

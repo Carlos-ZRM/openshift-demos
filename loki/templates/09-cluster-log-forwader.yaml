@@ -1,0 +1,61 @@
+apiVersion: observability.openshift.io/v1
+kind: ClusterLogForwarder
+metadata:
+  name: {{ include "minio.fullname" . }}-logforwader-loki
+  namespace: {{ .Values.loki_config.namespace }}
+  labels:
+    {{- include "minio.labels" . | nindent 4 }}
+spec:
+  managementState: Managed
+  filters:
+    - drop:
+        - test:
+            - field: .kubernetes.namespace_name
+              matches: (openshift|kube)-.*
+      name: excluir-namespaces-sistema
+      type: drop
+    - name: prueba
+      prune:
+        in:
+          - .kubernetes.annotations
+          - .kubernetes.container_id
+          - .kubernetes.container_image
+          - .kubernetes.container_image_id
+          - .kubernetes.container_iostream
+          - .kubernetes.labels
+          - .kubernetes.namespace_id
+          - .kubernetes.namespace_labels
+          - .kubernetes.pod_id
+          - .kubernetes.pod_ip
+          - .kubernetes.pod_owner
+        notIn:
+          - .kubernetes
+          - .log_source
+          - .log_type
+          - .message
+          - ."@timestamp"
+      type: prune
+    - name: stack-trace-inline
+      type: detectMultilineException
+  outputs:
+    - lokiStack:
+        authentication:
+          token:
+            from: serviceAccount
+        target:
+          name: {{ include "minio.fullname" . }}-logging-loki
+          namespace: {{ .Values.loki_config.namespace }}
+      name: {{ include "minio.fullname" . }}-logging-local-out
+      type: lokiStack
+  pipelines:
+    - filterRefs:
+        - excluir-namespaces-sistema
+        - stack-trace-inline
+        - prueba
+      inputRefs:
+        - application
+      name: logs-to-loki
+      outputRefs:
+        - {{ include "minio.fullname" . }}-logging-local-out
+  serviceAccount:
+    name: {{ include "minio.fullname" . }}-logging-collector-sa

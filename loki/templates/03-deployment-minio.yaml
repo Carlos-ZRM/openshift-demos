@@ -3,6 +3,7 @@ kind: Deployment
 apiVersion: apps/v1
 metadata:
   name: {{ include "minio.fullname" . }}-deploy
+  namespace: {{ .Values.loki_config.namespace }}
   labels:
     {{- include "minio.labels" . | nindent 4 }}
 spec:

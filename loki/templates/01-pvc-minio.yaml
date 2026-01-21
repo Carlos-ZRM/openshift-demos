@@ -3,11 +3,13 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: {{ include "minio.fullname" . }}-pvc
+  namespace: {{ .Values.loki_config.namespace }}
   labels:
     {{- include "minio.labels" . | nindent 4 }}
 spec:
   accessModes:
     - {{ .Values.minio_config.pvc.accessMode }}
+  storageClassName: {{ .Values.minio_config.pvc.storageClassName }}
   resources:
     requests:
       storage: {{ .Values.minio_config.pvc.size }}
