@@ -1,0 +1,36 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  labels:
+    build: app-base-net2
+  name: app-base-net2
+  namespace: xpk
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: app-base-ns:net2
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    binary: {}
+    type: Binary
+  strategy:
+    dockerStrategy:
+      buildArgs:
+        - name: BASE_IMAGE
+          value: "registry.access.redhat.com/ubi9/python-312:9.6-1747333115"
+        - name: APP_VERSION
+          value: "3.1.4"
+    type: Docker
+  successfulBuildsHistoryLimit: 5
+  triggers:
+  - github:
+      secret: 6lKqfBsLMuSNVxZ48sEz
+    type: GitHub
+  - generic:
+      secret: IMBa22Yw8JK-s_nWE7Kr
+    type: Generic
