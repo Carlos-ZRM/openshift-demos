@@ -1,11 +1,8 @@
-## Set domain into myvalues file
-
-
 ##  Create project
 
 ~~~ bash
 
-oc new-project helm
+oc new-project quay-poc
 
 ~~~
 
@@ -16,22 +13,24 @@ oc new-project helm
 cp values.yaml myvalues.yaml
 ~~~
 
+
 ## Modify cluster domain 
 
 ~~~ bash
 sed -i '' "s|domain:.*|domain: $(oc get ingresscontroller default -n openshift-ingress-operator -o jsonpath='{.status.domain}')|" myvalues.yaml
 ~~~
 
+## Obtain secret 
+
+~~~ bash
+
+sed -i '' "s|docker_config_secret:.*|docker_config_secret: '$(oc extract secret/pull-secret -n openshift-config --to=-)'|" myvalues.yaml
+
+
+~~~
 ## Install
 
-~~~ bash
-helm install loki  -f myvalues.yaml .
-~~~
 
 ~~~ bash
-helm upgrade loki -f myvalues.yaml .
+helm install bucket -f myvalues.yaml .
 ~~~
-
-## Create bucket
-
-loki

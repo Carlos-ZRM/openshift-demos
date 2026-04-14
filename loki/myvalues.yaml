@@ -5,7 +5,7 @@
 
 minio_config:
   pvc:
-    storageClassName: "ocs-external-storagecluster-cephfs"
+    storageClassName: "gp3-csi"
     accessMode: ReadWriteOnce
     size: 40Gi
     volumeMode: Filesystem
@@ -28,7 +28,7 @@ loki_config:
   approval: "Automatic"
   channel: stable
   namespace: openshift-logging
-  storage_class_name: "ocs-external-storagecluster-cephfs"
+  storage_class_name: "gp3-csi"
   retention_days: 20
   size: 1x.pico
   tenants_mode: openshift-logging
@@ -42,4 +42,4 @@ observability_config:
 
 
 ocp_config:
-  domain: apps.cluster-gvkm2.dynamic.redhatworkshops.io
+  domain: apps.cluster-rb9dp.rb9dp.sandbox2965.opentlc.com

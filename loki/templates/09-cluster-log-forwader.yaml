@@ -47,6 +47,8 @@ spec:
           namespace: {{ .Values.loki_config.namespace }}
       name: {{ include "minio.fullname" . }}-logging-local-out
       type: lokiStack
+      tls:
+        insecureSkipVerify: true
   pipelines:
     - filterRefs:
         - excluir-namespaces-sistema

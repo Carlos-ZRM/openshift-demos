@@ -6,8 +6,8 @@ metadata:
   labels:
     {{- include "minio.labels" . | nindent 4 }}
 spec:
+  host: {{ include "minio.fullname" . }}-ui.{{ .Values.ocp_config.domain }}
   to:
-    host: {{ include "minio.fullname" . }}-ui.{{ .Values.ocp_config.domain }}
     kind: Service
     name: {{ include "minio.fullname" . }}-svc
     weight: 100

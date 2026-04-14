@@ -1,0 +1,21 @@
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+  name: open-cluster-management-observability
+  labels:
+    openshift.io/cluster-monitoring: "true"
+---
+
+kind: Secret
+apiVersion: v1
+metadata:
+  name: multiclusterhub-operator-pull-secret
+  labels:
+    {{- include "minio.labels" . | nindent 4 }}
+  namespace: open-cluster-management-observability
+data:
+  .dockerconfigjson: {{ .Values.acm_observ_config.docker_config_secret | b64enc | quote }}
+type: kubernetes.io/dockerconfigjson
+
+

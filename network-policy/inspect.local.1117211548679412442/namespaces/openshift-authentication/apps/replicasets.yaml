@@ -1,0 +1,3122 @@
+---
+apiVersion: apps/v1
+items:
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "3"
+      deployment.kubernetes.io/revision: "3"
+      operator.openshift.io/rvs-hash: --TenbitBMpaRmsFNJK_kt57L0Vl7dkOuts5B9eZqrajisFpl2fq64MbOgdcTTJrmJJp3XgYN1XAw_CFRChg6Q
+      operator.openshift.io/spec-hash: c7eaf134e01197079da34482359026658ba4cfaa95a3ea26a60c199c322a92e1
+    creationTimestamp: "2026-02-26T20:12:11Z"
+    generation: 3
+    labels:
+      app: oauth-openshift
+      oauth-openshift-anti-affinity: "true"
+      pod-template-hash: 59dd68b7d6
+    managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:deployment.kubernetes.io/desired-replicas: {}
+            f:deployment.kubernetes.io/max-replicas: {}
+            f:deployment.kubernetes.io/revision: {}
+            f:operator.openshift.io/rvs-hash: {}
+            f:operator.openshift.io/spec-hash: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:oauth-openshift-anti-affinity: {}
+            f:pod-template-hash: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"0b8ae633-ddde-458c-8773-f6b12b0d6696"}: {}
+        f:spec:
+          f:replicas: {}
+          f:selector: {}
+          f:template:
+            f:metadata:
+              f:annotations:
+                .: {}
+                f:openshift.io/required-scc: {}
+                f:operator.openshift.io/bootstrap-user-exists: {}
+                f:operator.openshift.io/rvs-hash: {}
+                f:target.workload.openshift.io/management: {}
+              f:labels:
+                .: {}
+                f:app: {}
+                f:oauth-openshift-anti-affinity: {}
+                f:pod-template-hash: {}
+              f:name: {}
+              f:namespace: {}
+            f:spec:
+              f:affinity:
+                .: {}
+                f:podAntiAffinity:
+                  .: {}
+                  f:requiredDuringSchedulingIgnoredDuringExecution: {}
+              f:containers:
+                k:{"name":"oauth-openshift"}:
+                  .: {}
+                  f:args: {}
+                  f:command: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:lifecycle:
+                    .: {}
+                    f:preStop:
+                      .: {}
+                      f:exec:
+                        .: {}
+                        f:command: {}
+                  f:livenessProbe:
+                    .: {}
+                    f:failureThreshold: {}
+                    f:httpGet:
+                      .: {}
+                      f:path: {}
+                      f:port: {}
+                      f:scheme: {}
+                    f:initialDelaySeconds: {}
+                    f:periodSeconds: {}
+                    f:successThreshold: {}
+                    f:timeoutSeconds: {}
+                  f:name: {}
+                  f:ports:
+                    .: {}
+                    k:{"containerPort":6443,"protocol":"TCP"}:
+                      .: {}
+                      f:containerPort: {}
+                      f:name: {}
+                      f:protocol: {}
+                  f:readinessProbe:
+                    .: {}
+                    f:failureThreshold: {}
+                    f:httpGet:
+                      .: {}
+                      f:path: {}
+                      f:port: {}
+                      f:scheme: {}
+                    f:periodSeconds: {}
+                    f:successThreshold: {}
+                    f:timeoutSeconds: {}
+                  f:resources:
+                    .: {}
+                    f:requests:
+                      .: {}
+                      f:cpu: {}
+                      f:memory: {}
+                  f:securityContext:
+                    .: {}
+                    f:privileged: {}
+                    f:readOnlyRootFilesystem: {}
+                    f:runAsUser: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+                  f:volumeMounts:
+                    .: {}
+                    k:{"mountPath":"/var/config/system/configmaps/v4-0-config-system-cliconfig"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/configmaps/v4-0-config-system-service-ca"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-ocp-branding-template"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-router-certs"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-serving-cert"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-session"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/idp/0/secret/v4-0-config-user-idp-0-client-secret"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/template/secret/v4-0-config-user-template-error"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/template/secret/v4-0-config-user-template-login"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/template/secret/v4-0-config-user-template-provider-selection"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/log/oauth-server"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                    k:{"mountPath":"/var/run/configmaps/audit"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+              f:dnsPolicy: {}
+              f:nodeSelector: {}
+              f:priorityClassName: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:serviceAccount: {}
+              f:serviceAccountName: {}
+              f:terminationGracePeriodSeconds: {}
+              f:tolerations: {}
+              f:volumes:
+                .: {}
+                k:{"name":"audit-dir"}:
+                  .: {}
+                  f:hostPath:
+                    .: {}
+                    f:path: {}
+                    f:type: {}
+                  f:name: {}
+                k:{"name":"audit-policies"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-system-cliconfig"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-system-ocp-branding-template"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-router-certs"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-service-ca"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-system-serving-cert"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-session"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-trusted-ca-bundle"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                    f:optional: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-user-idp-0-client-secret"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:items: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-user-template-error"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:optional: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-user-template-login"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:optional: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-user-template-provider-selection"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:optional: {}
+                    f:secretName: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2026-02-26T20:12:15Z"
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:observedGeneration: {}
+          f:replicas: {}
+      manager: kube-controller-manager
+      operation: Update
+      subresource: status
+      time: "2026-02-26T20:12:15Z"
+    name: oauth-openshift-59dd68b7d6
+    namespace: openshift-authentication
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: oauth-openshift
+      uid: 0b8ae633-ddde-458c-8773-f6b12b0d6696
+    resourceVersion: "28835"
+    uid: 24ea5bd0-ea3e-4810-8977-4f440c2b799e
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: oauth-openshift
+        pod-template-hash: 59dd68b7d6
+    template:
+      metadata:
+        annotations:
+          openshift.io/required-scc: privileged
+          operator.openshift.io/bootstrap-user-exists: "true"
+          operator.openshift.io/rvs-hash: --TenbitBMpaRmsFNJK_kt57L0Vl7dkOuts5B9eZqrajisFpl2fq64MbOgdcTTJrmJJp3XgYN1XAw_CFRChg6Q
+          target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+        creationTimestamp: null
+        labels:
+          app: oauth-openshift
+          oauth-openshift-anti-affinity: "true"
+          pod-template-hash: 59dd68b7d6
+        name: oauth-openshift
+        namespace: openshift-authentication
+      spec:
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  app: oauth-openshift
+                  oauth-openshift-anti-affinity: "true"
+              topologyKey: kubernetes.io/hostname
+        containers:
+        - args:
+          - |
+            if [ -s /var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle/ca-bundle.crt ]; then
+                echo "Copying system trust bundle"
+                cp -f /var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle/ca-bundle.crt /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+            fi
+            exec oauth-server osinserver \
+            --config=/var/config/system/configmaps/v4-0-config-system-cliconfig/v4-0-config-system-cliconfig \
+            --v=2 \
+            --audit-log-format=json \
+            --audit-log-maxbackup=10 \
+            --audit-log-maxsize=100 \
+            --audit-log-path=/var/log/oauth-server/audit.log \
+            --audit-policy-file=/var/run/configmaps/audit/audit.yaml
+          command:
+          - /bin/bash
+          - -ec
+          image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:df950c8b195b2f391ebe096675e5d42db5c26b044968ceef46fad12d424a37b1
+          imagePullPolicy: IfNotPresent
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                - sleep
+                - "25"
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /healthz
+              port: 6443
+              scheme: HTTPS
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: oauth-openshift
+          ports:
+          - containerPort: 6443
+            name: https
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /healthz
+              port: 6443
+              scheme: HTTPS
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            requests:
+              cpu: 10m
+              memory: 50Mi
+          securityContext:
+            privileged: true
+            readOnlyRootFilesystem: false
+            runAsUser: 0
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: FallbackToLogsOnError
+          volumeMounts:
+          - mountPath: /var/run/configmaps/audit
+            name: audit-policies
+          - mountPath: /var/log/oauth-server
+            name: audit-dir
+          - mountPath: /var/config/system/secrets/v4-0-config-system-session
+            name: v4-0-config-system-session
+            readOnly: true
+          - mountPath: /var/config/system/configmaps/v4-0-config-system-cliconfig
+            name: v4-0-config-system-cliconfig
+            readOnly: true
+          - mountPath: /var/config/system/secrets/v4-0-config-system-serving-cert
+            name: v4-0-config-system-serving-cert
+            readOnly: true
+          - mountPath: /var/config/system/configmaps/v4-0-config-system-service-ca
+            name: v4-0-config-system-service-ca
+            readOnly: true
+          - mountPath: /var/config/system/secrets/v4-0-config-system-router-certs
+            name: v4-0-config-system-router-certs
+            readOnly: true
+          - mountPath: /var/config/system/secrets/v4-0-config-system-ocp-branding-template
+            name: v4-0-config-system-ocp-branding-template
+            readOnly: true
+          - mountPath: /var/config/user/template/secret/v4-0-config-user-template-login
+            name: v4-0-config-user-template-login
+            readOnly: true
+          - mountPath: /var/config/user/template/secret/v4-0-config-user-template-provider-selection
+            name: v4-0-config-user-template-provider-selection
+            readOnly: true
+          - mountPath: /var/config/user/template/secret/v4-0-config-user-template-error
+            name: v4-0-config-user-template-error
+            readOnly: true
+          - mountPath: /var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle
+            name: v4-0-config-system-trusted-ca-bundle
+            readOnly: true
+          - mountPath: /var/config/user/idp/0/secret/v4-0-config-user-idp-0-client-secret
+            name: v4-0-config-user-idp-0-client-secret
+            readOnly: true
+        dnsPolicy: ClusterFirst
+        nodeSelector:
+          node-role.kubernetes.io/master: ""
+        priorityClassName: system-cluster-critical
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: oauth-openshift
+        serviceAccountName: oauth-openshift
+        terminationGracePeriodSeconds: 40
+        tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+          operator: Exists
+        - effect: NoExecute
+          key: node.kubernetes.io/unreachable
+          operator: Exists
+          tolerationSeconds: 120
+        - effect: NoExecute
+          key: node.kubernetes.io/not-ready
+          operator: Exists
+          tolerationSeconds: 120
+        volumes:
+        - configMap:
+            defaultMode: 420
+            name: audit
+          name: audit-policies
+        - hostPath:
+            path: /var/log/oauth-server
+            type: ""
+          name: audit-dir
+        - name: v4-0-config-system-session
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-session
+        - configMap:
+            defaultMode: 420
+            name: v4-0-config-system-cliconfig
+          name: v4-0-config-system-cliconfig
+        - name: v4-0-config-system-serving-cert
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-serving-cert
+        - configMap:
+            defaultMode: 420
+            name: v4-0-config-system-service-ca
+          name: v4-0-config-system-service-ca
+        - name: v4-0-config-system-router-certs
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-router-certs
+        - name: v4-0-config-system-ocp-branding-template
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-ocp-branding-template
+        - name: v4-0-config-user-template-login
+          secret:
+            defaultMode: 420
+            optional: true
+            secretName: v4-0-config-user-template-login
+        - name: v4-0-config-user-template-provider-selection
+          secret:
+            defaultMode: 420
+            optional: true
+            secretName: v4-0-config-user-template-provider-selection
+        - name: v4-0-config-user-template-error
+          secret:
+            defaultMode: 420
+            optional: true
+            secretName: v4-0-config-user-template-error
+        - configMap:
+            defaultMode: 420
+            name: v4-0-config-system-trusted-ca-bundle
+            optional: true
+          name: v4-0-config-system-trusted-ca-bundle
+        - name: v4-0-config-user-idp-0-client-secret
+          secret:
+            defaultMode: 420
+            items:
+            - key: clientSecret
+              path: clientSecret
+            secretName: v4-0-config-user-idp-0-client-secret
+  status:
+    observedGeneration: 3
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "3"
+      deployment.kubernetes.io/revision: "2"
+      operator.openshift.io/rvs-hash: qPUORsqGcnuFYucs2ANEH7V0tKyEe7hmYW2UePMOQFVbsOb4NJkh4GQV549LgcrhowufJKZEbnDl4h83Wn2jCQ
+      operator.openshift.io/spec-hash: cd936dbe6b895f2a3248e7539f5bdabe4570b9c589e84ded1821707e502eadff
+    creationTimestamp: "2026-02-26T20:02:10Z"
+    generation: 7
+    labels:
+      app: oauth-openshift
+      oauth-openshift-anti-affinity: "true"
+      pod-template-hash: 5d9677cd75
+    managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:deployment.kubernetes.io/desired-replicas: {}
+            f:deployment.kubernetes.io/max-replicas: {}
+            f:deployment.kubernetes.io/revision: {}
+            f:operator.openshift.io/rvs-hash: {}
+            f:operator.openshift.io/spec-hash: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:oauth-openshift-anti-affinity: {}
+            f:pod-template-hash: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"0b8ae633-ddde-458c-8773-f6b12b0d6696"}: {}
+        f:spec:
+          f:replicas: {}
+          f:selector: {}
+          f:template:
+            f:metadata:
+              f:annotations:
+                .: {}
+                f:openshift.io/required-scc: {}
+                f:operator.openshift.io/bootstrap-user-exists: {}
+                f:operator.openshift.io/rvs-hash: {}
+                f:target.workload.openshift.io/management: {}
+              f:labels:
+                .: {}
+                f:app: {}
+                f:oauth-openshift-anti-affinity: {}
+                f:pod-template-hash: {}
+              f:name: {}
+              f:namespace: {}
+            f:spec:
+              f:affinity:
+                .: {}
+                f:podAntiAffinity:
+                  .: {}
+                  f:requiredDuringSchedulingIgnoredDuringExecution: {}
+              f:containers:
+                k:{"name":"oauth-openshift"}:
+                  .: {}
+                  f:args: {}
+                  f:command: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:lifecycle:
+                    .: {}
+                    f:preStop:
+                      .: {}
+                      f:exec:
+                        .: {}
+                        f:command: {}
+                  f:livenessProbe:
+                    .: {}
+                    f:failureThreshold: {}
+                    f:httpGet:
+                      .: {}
+                      f:path: {}
+                      f:port: {}
+                      f:scheme: {}
+                    f:initialDelaySeconds: {}
+                    f:periodSeconds: {}
+                    f:successThreshold: {}
+                    f:timeoutSeconds: {}
+                  f:name: {}
+                  f:ports:
+                    .: {}
+                    k:{"containerPort":6443,"protocol":"TCP"}:
+                      .: {}
+                      f:containerPort: {}
+                      f:name: {}
+                      f:protocol: {}
+                  f:readinessProbe:
+                    .: {}
+                    f:failureThreshold: {}
+                    f:httpGet:
+                      .: {}
+                      f:path: {}
+                      f:port: {}
+                      f:scheme: {}
+                    f:periodSeconds: {}
+                    f:successThreshold: {}
+                    f:timeoutSeconds: {}
+                  f:resources:
+                    .: {}
+                    f:requests:
+                      .: {}
+                      f:cpu: {}
+                      f:memory: {}
+                  f:securityContext:
+                    .: {}
+                    f:privileged: {}
+                    f:readOnlyRootFilesystem: {}
+                    f:runAsUser: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+                  f:volumeMounts:
+                    .: {}
+                    k:{"mountPath":"/var/config/system/configmaps/v4-0-config-system-cliconfig"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/configmaps/v4-0-config-system-service-ca"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-ocp-branding-template"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-router-certs"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-serving-cert"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-session"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/template/secret/v4-0-config-user-template-error"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/template/secret/v4-0-config-user-template-login"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/template/secret/v4-0-config-user-template-provider-selection"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/log/oauth-server"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                    k:{"mountPath":"/var/run/configmaps/audit"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+              f:dnsPolicy: {}
+              f:nodeSelector: {}
+              f:priorityClassName: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:serviceAccount: {}
+              f:serviceAccountName: {}
+              f:terminationGracePeriodSeconds: {}
+              f:tolerations: {}
+              f:volumes:
+                .: {}
+                k:{"name":"audit-dir"}:
+                  .: {}
+                  f:hostPath:
+                    .: {}
+                    f:path: {}
+                    f:type: {}
+                  f:name: {}
+                k:{"name":"audit-policies"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-system-cliconfig"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-system-ocp-branding-template"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-router-certs"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-service-ca"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-system-serving-cert"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-session"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-trusted-ca-bundle"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                    f:optional: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-user-template-error"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:optional: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-user-template-login"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:optional: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-user-template-provider-selection"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:optional: {}
+                    f:secretName: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2026-02-26T20:13:11Z"
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:observedGeneration: {}
+          f:replicas: {}
+      manager: kube-controller-manager
+      operation: Update
+      subresource: status
+      time: "2026-02-26T20:13:11Z"
+    name: oauth-openshift-5d9677cd75
+    namespace: openshift-authentication
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: oauth-openshift
+      uid: 0b8ae633-ddde-458c-8773-f6b12b0d6696
+    resourceVersion: "31052"
+    uid: 9ec4f4f0-ed0b-4dcb-8255-3b3951a07c79
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: oauth-openshift
+        pod-template-hash: 5d9677cd75
+    template:
+      metadata:
+        annotations:
+          openshift.io/required-scc: privileged
+          operator.openshift.io/bootstrap-user-exists: "true"
+          operator.openshift.io/rvs-hash: qPUORsqGcnuFYucs2ANEH7V0tKyEe7hmYW2UePMOQFVbsOb4NJkh4GQV549LgcrhowufJKZEbnDl4h83Wn2jCQ
+          target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+        creationTimestamp: null
+        labels:
+          app: oauth-openshift
+          oauth-openshift-anti-affinity: "true"
+          pod-template-hash: 5d9677cd75
+        name: oauth-openshift
+        namespace: openshift-authentication
+      spec:
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  app: oauth-openshift
+                  oauth-openshift-anti-affinity: "true"
+              topologyKey: kubernetes.io/hostname
+        containers:
+        - args:
+          - |
+            if [ -s /var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle/ca-bundle.crt ]; then
+                echo "Copying system trust bundle"
+                cp -f /var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle/ca-bundle.crt /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+            fi
+            exec oauth-server osinserver \
+            --config=/var/config/system/configmaps/v4-0-config-system-cliconfig/v4-0-config-system-cliconfig \
+            --v=2 \
+            --audit-log-format=json \
+            --audit-log-maxbackup=10 \
+            --audit-log-maxsize=100 \
+            --audit-log-path=/var/log/oauth-server/audit.log \
+            --audit-policy-file=/var/run/configmaps/audit/audit.yaml
+          command:
+          - /bin/bash
+          - -ec
+          image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:df950c8b195b2f391ebe096675e5d42db5c26b044968ceef46fad12d424a37b1
+          imagePullPolicy: IfNotPresent
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                - sleep
+                - "25"
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /healthz
+              port: 6443
+              scheme: HTTPS
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: oauth-openshift
+          ports:
+          - containerPort: 6443
+            name: https
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /healthz
+              port: 6443
+              scheme: HTTPS
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            requests:
+              cpu: 10m
+              memory: 50Mi
+          securityContext:
+            privileged: true
+            readOnlyRootFilesystem: false
+            runAsUser: 0
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: FallbackToLogsOnError
+          volumeMounts:
+          - mountPath: /var/run/configmaps/audit
+            name: audit-policies
+          - mountPath: /var/log/oauth-server
+            name: audit-dir
+          - mountPath: /var/config/system/secrets/v4-0-config-system-session
+            name: v4-0-config-system-session
+            readOnly: true
+          - mountPath: /var/config/system/configmaps/v4-0-config-system-cliconfig
+            name: v4-0-config-system-cliconfig
+            readOnly: true
+          - mountPath: /var/config/system/secrets/v4-0-config-system-serving-cert
+            name: v4-0-config-system-serving-cert
+            readOnly: true
+          - mountPath: /var/config/system/configmaps/v4-0-config-system-service-ca
+            name: v4-0-config-system-service-ca
+            readOnly: true
+          - mountPath: /var/config/system/secrets/v4-0-config-system-router-certs
+            name: v4-0-config-system-router-certs
+            readOnly: true
+          - mountPath: /var/config/system/secrets/v4-0-config-system-ocp-branding-template
+            name: v4-0-config-system-ocp-branding-template
+            readOnly: true
+          - mountPath: /var/config/user/template/secret/v4-0-config-user-template-login
+            name: v4-0-config-user-template-login
+            readOnly: true
+          - mountPath: /var/config/user/template/secret/v4-0-config-user-template-provider-selection
+            name: v4-0-config-user-template-provider-selection
+            readOnly: true
+          - mountPath: /var/config/user/template/secret/v4-0-config-user-template-error
+            name: v4-0-config-user-template-error
+            readOnly: true
+          - mountPath: /var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle
+            name: v4-0-config-system-trusted-ca-bundle
+            readOnly: true
+        dnsPolicy: ClusterFirst
+        nodeSelector:
+          node-role.kubernetes.io/master: ""
+        priorityClassName: system-cluster-critical
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: oauth-openshift
+        serviceAccountName: oauth-openshift
+        terminationGracePeriodSeconds: 40
+        tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+          operator: Exists
+        - effect: NoExecute
+          key: node.kubernetes.io/unreachable
+          operator: Exists
+          tolerationSeconds: 120
+        - effect: NoExecute
+          key: node.kubernetes.io/not-ready
+          operator: Exists
+          tolerationSeconds: 120
+        volumes:
+        - configMap:
+            defaultMode: 420
+            name: audit
+          name: audit-policies
+        - hostPath:
+            path: /var/log/oauth-server
+            type: ""
+          name: audit-dir
+        - name: v4-0-config-system-session
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-session
+        - configMap:
+            defaultMode: 420
+            name: v4-0-config-system-cliconfig
+          name: v4-0-config-system-cliconfig
+        - name: v4-0-config-system-serving-cert
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-serving-cert
+        - configMap:
+            defaultMode: 420
+            name: v4-0-config-system-service-ca
+          name: v4-0-config-system-service-ca
+        - name: v4-0-config-system-router-certs
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-router-certs
+        - name: v4-0-config-system-ocp-branding-template
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-ocp-branding-template
+        - name: v4-0-config-user-template-login
+          secret:
+            defaultMode: 420
+            optional: true
+            secretName: v4-0-config-user-template-login
+        - name: v4-0-config-user-template-provider-selection
+          secret:
+            defaultMode: 420
+            optional: true
+            secretName: v4-0-config-user-template-provider-selection
+        - name: v4-0-config-user-template-error
+          secret:
+            defaultMode: 420
+            optional: true
+            secretName: v4-0-config-user-template-error
+        - configMap:
+            defaultMode: 420
+            name: v4-0-config-system-trusted-ca-bundle
+            optional: true
+          name: v4-0-config-system-trusted-ca-bundle
+  status:
+    observedGeneration: 7
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "3"
+      deployment.kubernetes.io/revision: "6"
+      operator.openshift.io/rvs-hash: 1LOIegyvMADU984bkAerwKC_z0Vdxw7R_UKM6EsFukSQXLVr1Ucb1lMVe--1Ow679RaJbXmA880WJ0MGw_KKRQ
+      operator.openshift.io/spec-hash: f7449dd5e4a901b362c919967257e21b86427e210e9312c71b4048a93d08b801
+    creationTimestamp: "2026-02-26T20:13:36Z"
+    generation: 4
+    labels:
+      app: oauth-openshift
+      oauth-openshift-anti-affinity: "true"
+      pod-template-hash: 67c844c6b5
+    managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:deployment.kubernetes.io/desired-replicas: {}
+            f:deployment.kubernetes.io/max-replicas: {}
+            f:deployment.kubernetes.io/revision: {}
+            f:operator.openshift.io/rvs-hash: {}
+            f:operator.openshift.io/spec-hash: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:oauth-openshift-anti-affinity: {}
+            f:pod-template-hash: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"0b8ae633-ddde-458c-8773-f6b12b0d6696"}: {}
+        f:spec:
+          f:replicas: {}
+          f:selector: {}
+          f:template:
+            f:metadata:
+              f:annotations:
+                .: {}
+                f:openshift.io/required-scc: {}
+                f:operator.openshift.io/bootstrap-user-exists: {}
+                f:operator.openshift.io/rvs-hash: {}
+                f:target.workload.openshift.io/management: {}
+              f:labels:
+                .: {}
+                f:app: {}
+                f:oauth-openshift-anti-affinity: {}
+                f:pod-template-hash: {}
+              f:name: {}
+              f:namespace: {}
+            f:spec:
+              f:affinity:
+                .: {}
+                f:podAntiAffinity:
+                  .: {}
+                  f:requiredDuringSchedulingIgnoredDuringExecution: {}
+              f:containers:
+                k:{"name":"oauth-openshift"}:
+                  .: {}
+                  f:args: {}
+                  f:command: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:lifecycle:
+                    .: {}
+                    f:preStop:
+                      .: {}
+                      f:exec:
+                        .: {}
+                        f:command: {}
+                  f:livenessProbe:
+                    .: {}
+                    f:failureThreshold: {}
+                    f:httpGet:
+                      .: {}
+                      f:path: {}
+                      f:port: {}
+                      f:scheme: {}
+                    f:initialDelaySeconds: {}
+                    f:periodSeconds: {}
+                    f:successThreshold: {}
+                    f:timeoutSeconds: {}
+                  f:name: {}
+                  f:ports:
+                    .: {}
+                    k:{"containerPort":6443,"protocol":"TCP"}:
+                      .: {}
+                      f:containerPort: {}
+                      f:name: {}
+                      f:protocol: {}
+                  f:readinessProbe:
+                    .: {}
+                    f:failureThreshold: {}
+                    f:httpGet:
+                      .: {}
+                      f:path: {}
+                      f:port: {}
+                      f:scheme: {}
+                    f:periodSeconds: {}
+                    f:successThreshold: {}
+                    f:timeoutSeconds: {}
+                  f:resources:
+                    .: {}
+                    f:requests:
+                      .: {}
+                      f:cpu: {}
+                      f:memory: {}
+                  f:securityContext:
+                    .: {}
+                    f:privileged: {}
+                    f:readOnlyRootFilesystem: {}
+                    f:runAsUser: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+                  f:volumeMounts:
+                    .: {}
+                    k:{"mountPath":"/var/config/system/configmaps/v4-0-config-system-cliconfig"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/configmaps/v4-0-config-system-service-ca"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-ocp-branding-template"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-router-certs"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-serving-cert"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-session"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/idp/0/secret/v4-0-config-user-idp-0-client-secret"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/template/secret/v4-0-config-user-template-error"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/template/secret/v4-0-config-user-template-login"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/template/secret/v4-0-config-user-template-provider-selection"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/log/oauth-server"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                    k:{"mountPath":"/var/run/configmaps/audit"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+              f:dnsPolicy: {}
+              f:nodeSelector: {}
+              f:priorityClassName: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:serviceAccount: {}
+              f:serviceAccountName: {}
+              f:terminationGracePeriodSeconds: {}
+              f:tolerations: {}
+              f:volumes:
+                .: {}
+                k:{"name":"audit-dir"}:
+                  .: {}
+                  f:hostPath:
+                    .: {}
+                    f:path: {}
+                    f:type: {}
+                  f:name: {}
+                k:{"name":"audit-policies"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-system-cliconfig"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-system-ocp-branding-template"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-router-certs"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-service-ca"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-system-serving-cert"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-session"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-trusted-ca-bundle"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                    f:optional: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-user-idp-0-client-secret"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:items: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-user-template-error"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:optional: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-user-template-login"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:optional: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-user-template-provider-selection"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:optional: {}
+                    f:secretName: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2026-02-26T20:14:08Z"
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:availableReplicas: {}
+          f:fullyLabeledReplicas: {}
+          f:observedGeneration: {}
+          f:readyReplicas: {}
+          f:replicas: {}
+      manager: kube-controller-manager
+      operation: Update
+      subresource: status
+      time: "2026-02-26T20:15:28Z"
+    name: oauth-openshift-67c844c6b5
+    namespace: openshift-authentication
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: oauth-openshift
+      uid: 0b8ae633-ddde-458c-8773-f6b12b0d6696
+    resourceVersion: "34657"
+    uid: 0a85d745-2ecc-4246-8165-4a1827e3e3c9
+  spec:
+    replicas: 3
+    selector:
+      matchLabels:
+        app: oauth-openshift
+        pod-template-hash: 67c844c6b5
+    template:
+      metadata:
+        annotations:
+          openshift.io/required-scc: privileged
+          operator.openshift.io/bootstrap-user-exists: "true"
+          operator.openshift.io/rvs-hash: 1LOIegyvMADU984bkAerwKC_z0Vdxw7R_UKM6EsFukSQXLVr1Ucb1lMVe--1Ow679RaJbXmA880WJ0MGw_KKRQ
+          target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+        creationTimestamp: null
+        labels:
+          app: oauth-openshift
+          oauth-openshift-anti-affinity: "true"
+          pod-template-hash: 67c844c6b5
+        name: oauth-openshift
+        namespace: openshift-authentication
+      spec:
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  app: oauth-openshift
+                  oauth-openshift-anti-affinity: "true"
+              topologyKey: kubernetes.io/hostname
+        containers:
+        - args:
+          - |
+            if [ -s /var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle/ca-bundle.crt ]; then
+                echo "Copying system trust bundle"
+                cp -f /var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle/ca-bundle.crt /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+            fi
+            exec oauth-server osinserver \
+            --config=/var/config/system/configmaps/v4-0-config-system-cliconfig/v4-0-config-system-cliconfig \
+            --v=2 \
+            --audit-log-format=json \
+            --audit-log-maxbackup=10 \
+            --audit-log-maxsize=100 \
+            --audit-log-path=/var/log/oauth-server/audit.log \
+            --audit-policy-file=/var/run/configmaps/audit/audit.yaml
+          command:
+          - /bin/bash
+          - -ec
+          image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:df950c8b195b2f391ebe096675e5d42db5c26b044968ceef46fad12d424a37b1
+          imagePullPolicy: IfNotPresent
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                - sleep
+                - "25"
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /healthz
+              port: 6443
+              scheme: HTTPS
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: oauth-openshift
+          ports:
+          - containerPort: 6443
+            name: https
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /healthz
+              port: 6443
+              scheme: HTTPS
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            requests:
+              cpu: 10m
+              memory: 50Mi
+          securityContext:
+            privileged: true
+            readOnlyRootFilesystem: false
+            runAsUser: 0
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: FallbackToLogsOnError
+          volumeMounts:
+          - mountPath: /var/run/configmaps/audit
+            name: audit-policies
+          - mountPath: /var/log/oauth-server
+            name: audit-dir
+          - mountPath: /var/config/system/secrets/v4-0-config-system-session
+            name: v4-0-config-system-session
+            readOnly: true
+          - mountPath: /var/config/system/configmaps/v4-0-config-system-cliconfig
+            name: v4-0-config-system-cliconfig
+            readOnly: true
+          - mountPath: /var/config/system/secrets/v4-0-config-system-serving-cert
+            name: v4-0-config-system-serving-cert
+            readOnly: true
+          - mountPath: /var/config/system/configmaps/v4-0-config-system-service-ca
+            name: v4-0-config-system-service-ca
+            readOnly: true
+          - mountPath: /var/config/system/secrets/v4-0-config-system-router-certs
+            name: v4-0-config-system-router-certs
+            readOnly: true
+          - mountPath: /var/config/system/secrets/v4-0-config-system-ocp-branding-template
+            name: v4-0-config-system-ocp-branding-template
+            readOnly: true
+          - mountPath: /var/config/user/template/secret/v4-0-config-user-template-login
+            name: v4-0-config-user-template-login
+            readOnly: true
+          - mountPath: /var/config/user/template/secret/v4-0-config-user-template-provider-selection
+            name: v4-0-config-user-template-provider-selection
+            readOnly: true
+          - mountPath: /var/config/user/template/secret/v4-0-config-user-template-error
+            name: v4-0-config-user-template-error
+            readOnly: true
+          - mountPath: /var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle
+            name: v4-0-config-system-trusted-ca-bundle
+            readOnly: true
+          - mountPath: /var/config/user/idp/0/secret/v4-0-config-user-idp-0-client-secret
+            name: v4-0-config-user-idp-0-client-secret
+            readOnly: true
+        dnsPolicy: ClusterFirst
+        nodeSelector:
+          node-role.kubernetes.io/master: ""
+        priorityClassName: system-cluster-critical
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: oauth-openshift
+        serviceAccountName: oauth-openshift
+        terminationGracePeriodSeconds: 40
+        tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+          operator: Exists
+        - effect: NoExecute
+          key: node.kubernetes.io/unreachable
+          operator: Exists
+          tolerationSeconds: 120
+        - effect: NoExecute
+          key: node.kubernetes.io/not-ready
+          operator: Exists
+          tolerationSeconds: 120
+        volumes:
+        - configMap:
+            defaultMode: 420
+            name: audit
+          name: audit-policies
+        - hostPath:
+            path: /var/log/oauth-server
+            type: ""
+          name: audit-dir
+        - name: v4-0-config-system-session
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-session
+        - configMap:
+            defaultMode: 420
+            name: v4-0-config-system-cliconfig
+          name: v4-0-config-system-cliconfig
+        - name: v4-0-config-system-serving-cert
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-serving-cert
+        - configMap:
+            defaultMode: 420
+            name: v4-0-config-system-service-ca
+          name: v4-0-config-system-service-ca
+        - name: v4-0-config-system-router-certs
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-router-certs
+        - name: v4-0-config-system-ocp-branding-template
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-ocp-branding-template
+        - name: v4-0-config-user-template-login
+          secret:
+            defaultMode: 420
+            optional: true
+            secretName: v4-0-config-user-template-login
+        - name: v4-0-config-user-template-provider-selection
+          secret:
+            defaultMode: 420
+            optional: true
+            secretName: v4-0-config-user-template-provider-selection
+        - name: v4-0-config-user-template-error
+          secret:
+            defaultMode: 420
+            optional: true
+            secretName: v4-0-config-user-template-error
+        - configMap:
+            defaultMode: 420
+            name: v4-0-config-system-trusted-ca-bundle
+            optional: true
+          name: v4-0-config-system-trusted-ca-bundle
+        - name: v4-0-config-user-idp-0-client-secret
+          secret:
+            defaultMode: 420
+            items:
+            - key: clientSecret
+              path: clientSecret
+            secretName: v4-0-config-user-idp-0-client-secret
+  status:
+    availableReplicas: 3
+    fullyLabeledReplicas: 3
+    observedGeneration: 4
+    readyReplicas: 3
+    replicas: 3
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "3"
+      deployment.kubernetes.io/revision: "1"
+      operator.openshift.io/rvs-hash: kDtUKamjQBB0NnFX5ddLiM6d7BXLLoCQ8ee7kcN_ZPnYeV5D7gDVD0bcuF_s1hjzYd53M2fpdLoQiDqDMnwA8g
+      operator.openshift.io/spec-hash: 1a6839b5ae3e1067e0380e366b727ef81ab7b4066d92375a33885631fa666225
+    creationTimestamp: "2026-02-26T20:02:04Z"
+    generation: 4
+    labels:
+      app: oauth-openshift
+      oauth-openshift-anti-affinity: "true"
+      pod-template-hash: 6bb657898
+    managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:deployment.kubernetes.io/desired-replicas: {}
+            f:deployment.kubernetes.io/max-replicas: {}
+            f:deployment.kubernetes.io/revision: {}
+            f:operator.openshift.io/rvs-hash: {}
+            f:operator.openshift.io/spec-hash: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:oauth-openshift-anti-affinity: {}
+            f:pod-template-hash: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"0b8ae633-ddde-458c-8773-f6b12b0d6696"}: {}
+        f:spec:
+          f:replicas: {}
+          f:selector: {}
+          f:template:
+            f:metadata:
+              f:annotations:
+                .: {}
+                f:openshift.io/required-scc: {}
+                f:operator.openshift.io/bootstrap-user-exists: {}
+                f:operator.openshift.io/rvs-hash: {}
+                f:target.workload.openshift.io/management: {}
+              f:labels:
+                .: {}
+                f:app: {}
+                f:oauth-openshift-anti-affinity: {}
+                f:pod-template-hash: {}
+              f:name: {}
+              f:namespace: {}
+            f:spec:
+              f:affinity:
+                .: {}
+                f:podAntiAffinity:
+                  .: {}
+                  f:requiredDuringSchedulingIgnoredDuringExecution: {}
+              f:containers:
+                k:{"name":"oauth-openshift"}:
+                  .: {}
+                  f:args: {}
+                  f:command: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:lifecycle:
+                    .: {}
+                    f:preStop:
+                      .: {}
+                      f:exec:
+                        .: {}
+                        f:command: {}
+                  f:livenessProbe:
+                    .: {}
+                    f:failureThreshold: {}
+                    f:httpGet:
+                      .: {}
+                      f:path: {}
+                      f:port: {}
+                      f:scheme: {}
+                    f:initialDelaySeconds: {}
+                    f:periodSeconds: {}
+                    f:successThreshold: {}
+                    f:timeoutSeconds: {}
+                  f:name: {}
+                  f:ports:
+                    .: {}
+                    k:{"containerPort":6443,"protocol":"TCP"}:
+                      .: {}
+                      f:containerPort: {}
+                      f:name: {}
+                      f:protocol: {}
+                  f:readinessProbe:
+                    .: {}
+                    f:failureThreshold: {}
+                    f:httpGet:
+                      .: {}
+                      f:path: {}
+                      f:port: {}
+                      f:scheme: {}
+                    f:periodSeconds: {}
+                    f:successThreshold: {}
+                    f:timeoutSeconds: {}
+                  f:resources:
+                    .: {}
+                    f:requests:
+                      .: {}
+                      f:cpu: {}
+                      f:memory: {}
+                  f:securityContext:
+                    .: {}
+                    f:privileged: {}
+                    f:readOnlyRootFilesystem: {}
+                    f:runAsUser: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+                  f:volumeMounts:
+                    .: {}
+                    k:{"mountPath":"/var/config/system/configmaps/v4-0-config-system-cliconfig"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/configmaps/v4-0-config-system-service-ca"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-ocp-branding-template"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-router-certs"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-serving-cert"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-session"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/template/secret/v4-0-config-user-template-error"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/template/secret/v4-0-config-user-template-login"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/template/secret/v4-0-config-user-template-provider-selection"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/log/oauth-server"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                    k:{"mountPath":"/var/run/configmaps/audit"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+              f:dnsPolicy: {}
+              f:nodeSelector: {}
+              f:priorityClassName: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:serviceAccount: {}
+              f:serviceAccountName: {}
+              f:terminationGracePeriodSeconds: {}
+              f:tolerations: {}
+              f:volumes:
+                .: {}
+                k:{"name":"audit-dir"}:
+                  .: {}
+                  f:hostPath:
+                    .: {}
+                    f:path: {}
+                    f:type: {}
+                  f:name: {}
+                k:{"name":"audit-policies"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-system-cliconfig"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-system-ocp-branding-template"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-router-certs"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-service-ca"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-system-serving-cert"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-session"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-trusted-ca-bundle"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                    f:optional: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-user-template-error"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:optional: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-user-template-login"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:optional: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-user-template-provider-selection"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:optional: {}
+                    f:secretName: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2026-02-26T20:03:18Z"
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:observedGeneration: {}
+          f:replicas: {}
+      manager: kube-controller-manager
+      operation: Update
+      subresource: status
+      time: "2026-02-26T20:03:18Z"
+    name: oauth-openshift-6bb657898
+    namespace: openshift-authentication
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: oauth-openshift
+      uid: 0b8ae633-ddde-458c-8773-f6b12b0d6696
+    resourceVersion: "24131"
+    uid: 079f5220-4568-477f-8846-7a78796fb098
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: oauth-openshift
+        pod-template-hash: 6bb657898
+    template:
+      metadata:
+        annotations:
+          openshift.io/required-scc: privileged
+          operator.openshift.io/bootstrap-user-exists: "true"
+          operator.openshift.io/rvs-hash: kDtUKamjQBB0NnFX5ddLiM6d7BXLLoCQ8ee7kcN_ZPnYeV5D7gDVD0bcuF_s1hjzYd53M2fpdLoQiDqDMnwA8g
+          target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+        creationTimestamp: null
+        labels:
+          app: oauth-openshift
+          oauth-openshift-anti-affinity: "true"
+          pod-template-hash: 6bb657898
+        name: oauth-openshift
+        namespace: openshift-authentication
+      spec:
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  app: oauth-openshift
+                  oauth-openshift-anti-affinity: "true"
+              topologyKey: kubernetes.io/hostname
+        containers:
+        - args:
+          - |
+            if [ -s /var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle/ca-bundle.crt ]; then
+                echo "Copying system trust bundle"
+                cp -f /var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle/ca-bundle.crt /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+            fi
+            exec oauth-server osinserver \
+            --config=/var/config/system/configmaps/v4-0-config-system-cliconfig/v4-0-config-system-cliconfig \
+            --v=2 \
+            --audit-log-format=json \
+            --audit-log-maxbackup=10 \
+            --audit-log-maxsize=100 \
+            --audit-log-path=/var/log/oauth-server/audit.log \
+            --audit-policy-file=/var/run/configmaps/audit/audit.yaml
+          command:
+          - /bin/bash
+          - -ec
+          image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:df950c8b195b2f391ebe096675e5d42db5c26b044968ceef46fad12d424a37b1
+          imagePullPolicy: IfNotPresent
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                - sleep
+                - "25"
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /healthz
+              port: 6443
+              scheme: HTTPS
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: oauth-openshift
+          ports:
+          - containerPort: 6443
+            name: https
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /healthz
+              port: 6443
+              scheme: HTTPS
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            requests:
+              cpu: 10m
+              memory: 50Mi
+          securityContext:
+            privileged: true
+            readOnlyRootFilesystem: false
+            runAsUser: 0
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: FallbackToLogsOnError
+          volumeMounts:
+          - mountPath: /var/run/configmaps/audit
+            name: audit-policies
+          - mountPath: /var/log/oauth-server
+            name: audit-dir
+          - mountPath: /var/config/system/secrets/v4-0-config-system-session
+            name: v4-0-config-system-session
+            readOnly: true
+          - mountPath: /var/config/system/configmaps/v4-0-config-system-cliconfig
+            name: v4-0-config-system-cliconfig
+            readOnly: true
+          - mountPath: /var/config/system/secrets/v4-0-config-system-serving-cert
+            name: v4-0-config-system-serving-cert
+            readOnly: true
+          - mountPath: /var/config/system/configmaps/v4-0-config-system-service-ca
+            name: v4-0-config-system-service-ca
+            readOnly: true
+          - mountPath: /var/config/system/secrets/v4-0-config-system-router-certs
+            name: v4-0-config-system-router-certs
+            readOnly: true
+          - mountPath: /var/config/system/secrets/v4-0-config-system-ocp-branding-template
+            name: v4-0-config-system-ocp-branding-template
+            readOnly: true
+          - mountPath: /var/config/user/template/secret/v4-0-config-user-template-login
+            name: v4-0-config-user-template-login
+            readOnly: true
+          - mountPath: /var/config/user/template/secret/v4-0-config-user-template-provider-selection
+            name: v4-0-config-user-template-provider-selection
+            readOnly: true
+          - mountPath: /var/config/user/template/secret/v4-0-config-user-template-error
+            name: v4-0-config-user-template-error
+            readOnly: true
+          - mountPath: /var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle
+            name: v4-0-config-system-trusted-ca-bundle
+            readOnly: true
+        dnsPolicy: ClusterFirst
+        nodeSelector:
+          node-role.kubernetes.io/master: ""
+        priorityClassName: system-cluster-critical
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: oauth-openshift
+        serviceAccountName: oauth-openshift
+        terminationGracePeriodSeconds: 40
+        tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+          operator: Exists
+        - effect: NoExecute
+          key: node.kubernetes.io/unreachable
+          operator: Exists
+          tolerationSeconds: 120
+        - effect: NoExecute
+          key: node.kubernetes.io/not-ready
+          operator: Exists
+          tolerationSeconds: 120
+        volumes:
+        - configMap:
+            defaultMode: 420
+            name: audit
+          name: audit-policies
+        - hostPath:
+            path: /var/log/oauth-server
+            type: ""
+          name: audit-dir
+        - name: v4-0-config-system-session
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-session
+        - configMap:
+            defaultMode: 420
+            name: v4-0-config-system-cliconfig
+          name: v4-0-config-system-cliconfig
+        - name: v4-0-config-system-serving-cert
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-serving-cert
+        - configMap:
+            defaultMode: 420
+            name: v4-0-config-system-service-ca
+          name: v4-0-config-system-service-ca
+        - name: v4-0-config-system-router-certs
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-router-certs
+        - name: v4-0-config-system-ocp-branding-template
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-ocp-branding-template
+        - name: v4-0-config-user-template-login
+          secret:
+            defaultMode: 420
+            optional: true
+            secretName: v4-0-config-user-template-login
+        - name: v4-0-config-user-template-provider-selection
+          secret:
+            defaultMode: 420
+            optional: true
+            secretName: v4-0-config-user-template-provider-selection
+        - name: v4-0-config-user-template-error
+          secret:
+            defaultMode: 420
+            optional: true
+            secretName: v4-0-config-user-template-error
+        - configMap:
+            defaultMode: 420
+            name: v4-0-config-system-trusted-ca-bundle
+            optional: true
+          name: v4-0-config-system-trusted-ca-bundle
+  status:
+    observedGeneration: 4
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "3"
+      deployment.kubernetes.io/revision: "4"
+      operator.openshift.io/rvs-hash: LHzhTwVwG24jlHTpBzw1xBOeaVzhmBWHxXKgvDb1xDLRjEO33UeuZqaAghKT-n69yaAEUCWfWsGgCkqYd_xoVA
+      operator.openshift.io/spec-hash: 1eaaa60a4c190d018e497c38e77ce05743873455e7955ad16be307ac1bed7e8c
+    creationTimestamp: "2026-02-26T20:12:14Z"
+    generation: 7
+    labels:
+      app: oauth-openshift
+      oauth-openshift-anti-affinity: "true"
+      pod-template-hash: 7d4f59987f
+    managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:deployment.kubernetes.io/desired-replicas: {}
+            f:deployment.kubernetes.io/max-replicas: {}
+            f:deployment.kubernetes.io/revision: {}
+            f:operator.openshift.io/rvs-hash: {}
+            f:operator.openshift.io/spec-hash: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:oauth-openshift-anti-affinity: {}
+            f:pod-template-hash: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"0b8ae633-ddde-458c-8773-f6b12b0d6696"}: {}
+        f:spec:
+          f:replicas: {}
+          f:selector: {}
+          f:template:
+            f:metadata:
+              f:annotations:
+                .: {}
+                f:openshift.io/required-scc: {}
+                f:operator.openshift.io/bootstrap-user-exists: {}
+                f:operator.openshift.io/rvs-hash: {}
+                f:target.workload.openshift.io/management: {}
+              f:labels:
+                .: {}
+                f:app: {}
+                f:oauth-openshift-anti-affinity: {}
+                f:pod-template-hash: {}
+              f:name: {}
+              f:namespace: {}
+            f:spec:
+              f:affinity:
+                .: {}
+                f:podAntiAffinity:
+                  .: {}
+                  f:requiredDuringSchedulingIgnoredDuringExecution: {}
+              f:containers:
+                k:{"name":"oauth-openshift"}:
+                  .: {}
+                  f:args: {}
+                  f:command: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:lifecycle:
+                    .: {}
+                    f:preStop:
+                      .: {}
+                      f:exec:
+                        .: {}
+                        f:command: {}
+                  f:livenessProbe:
+                    .: {}
+                    f:failureThreshold: {}
+                    f:httpGet:
+                      .: {}
+                      f:path: {}
+                      f:port: {}
+                      f:scheme: {}
+                    f:initialDelaySeconds: {}
+                    f:periodSeconds: {}
+                    f:successThreshold: {}
+                    f:timeoutSeconds: {}
+                  f:name: {}
+                  f:ports:
+                    .: {}
+                    k:{"containerPort":6443,"protocol":"TCP"}:
+                      .: {}
+                      f:containerPort: {}
+                      f:name: {}
+                      f:protocol: {}
+                  f:readinessProbe:
+                    .: {}
+                    f:failureThreshold: {}
+                    f:httpGet:
+                      .: {}
+                      f:path: {}
+                      f:port: {}
+                      f:scheme: {}
+                    f:periodSeconds: {}
+                    f:successThreshold: {}
+                    f:timeoutSeconds: {}
+                  f:resources:
+                    .: {}
+                    f:requests:
+                      .: {}
+                      f:cpu: {}
+                      f:memory: {}
+                  f:securityContext:
+                    .: {}
+                    f:privileged: {}
+                    f:readOnlyRootFilesystem: {}
+                    f:runAsUser: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+                  f:volumeMounts:
+                    .: {}
+                    k:{"mountPath":"/var/config/system/configmaps/v4-0-config-system-cliconfig"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/configmaps/v4-0-config-system-service-ca"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-ocp-branding-template"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-router-certs"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-serving-cert"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-session"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/idp/0/secret/v4-0-config-user-idp-0-client-secret"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/template/secret/v4-0-config-user-template-error"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/template/secret/v4-0-config-user-template-login"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/template/secret/v4-0-config-user-template-provider-selection"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/log/oauth-server"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                    k:{"mountPath":"/var/run/configmaps/audit"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+              f:dnsPolicy: {}
+              f:nodeSelector: {}
+              f:priorityClassName: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:serviceAccount: {}
+              f:serviceAccountName: {}
+              f:terminationGracePeriodSeconds: {}
+              f:tolerations: {}
+              f:volumes:
+                .: {}
+                k:{"name":"audit-dir"}:
+                  .: {}
+                  f:hostPath:
+                    .: {}
+                    f:path: {}
+                    f:type: {}
+                  f:name: {}
+                k:{"name":"audit-policies"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-system-cliconfig"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-system-ocp-branding-template"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-router-certs"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-service-ca"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-system-serving-cert"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-session"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-trusted-ca-bundle"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                    f:optional: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-user-idp-0-client-secret"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:items: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-user-template-error"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:optional: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-user-template-login"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:optional: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-user-template-provider-selection"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:optional: {}
+                    f:secretName: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2026-02-26T20:14:08Z"
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:observedGeneration: {}
+          f:replicas: {}
+      manager: kube-controller-manager
+      operation: Update
+      subresource: status
+      time: "2026-02-26T20:14:08Z"
+    name: oauth-openshift-7d4f59987f
+    namespace: openshift-authentication
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: oauth-openshift
+      uid: 0b8ae633-ddde-458c-8773-f6b12b0d6696
+    resourceVersion: "33119"
+    uid: 886dc13d-2aa9-40b5-9de7-f50a45edd364
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: oauth-openshift
+        pod-template-hash: 7d4f59987f
+    template:
+      metadata:
+        annotations:
+          openshift.io/required-scc: privileged
+          operator.openshift.io/bootstrap-user-exists: "true"
+          operator.openshift.io/rvs-hash: LHzhTwVwG24jlHTpBzw1xBOeaVzhmBWHxXKgvDb1xDLRjEO33UeuZqaAghKT-n69yaAEUCWfWsGgCkqYd_xoVA
+          target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+        creationTimestamp: null
+        labels:
+          app: oauth-openshift
+          oauth-openshift-anti-affinity: "true"
+          pod-template-hash: 7d4f59987f
+        name: oauth-openshift
+        namespace: openshift-authentication
+      spec:
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  app: oauth-openshift
+                  oauth-openshift-anti-affinity: "true"
+              topologyKey: kubernetes.io/hostname
+        containers:
+        - args:
+          - |
+            if [ -s /var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle/ca-bundle.crt ]; then
+                echo "Copying system trust bundle"
+                cp -f /var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle/ca-bundle.crt /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+            fi
+            exec oauth-server osinserver \
+            --config=/var/config/system/configmaps/v4-0-config-system-cliconfig/v4-0-config-system-cliconfig \
+            --v=2 \
+            --audit-log-format=json \
+            --audit-log-maxbackup=10 \
+            --audit-log-maxsize=100 \
+            --audit-log-path=/var/log/oauth-server/audit.log \
+            --audit-policy-file=/var/run/configmaps/audit/audit.yaml
+          command:
+          - /bin/bash
+          - -ec
+          image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:df950c8b195b2f391ebe096675e5d42db5c26b044968ceef46fad12d424a37b1
+          imagePullPolicy: IfNotPresent
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                - sleep
+                - "25"
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /healthz
+              port: 6443
+              scheme: HTTPS
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: oauth-openshift
+          ports:
+          - containerPort: 6443
+            name: https
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /healthz
+              port: 6443
+              scheme: HTTPS
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            requests:
+              cpu: 10m
+              memory: 50Mi
+          securityContext:
+            privileged: true
+            readOnlyRootFilesystem: false
+            runAsUser: 0
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: FallbackToLogsOnError
+          volumeMounts:
+          - mountPath: /var/run/configmaps/audit
+            name: audit-policies
+          - mountPath: /var/log/oauth-server
+            name: audit-dir
+          - mountPath: /var/config/system/secrets/v4-0-config-system-session
+            name: v4-0-config-system-session
+            readOnly: true
+          - mountPath: /var/config/system/configmaps/v4-0-config-system-cliconfig
+            name: v4-0-config-system-cliconfig
+            readOnly: true
+          - mountPath: /var/config/system/secrets/v4-0-config-system-serving-cert
+            name: v4-0-config-system-serving-cert
+            readOnly: true
+          - mountPath: /var/config/system/configmaps/v4-0-config-system-service-ca
+            name: v4-0-config-system-service-ca
+            readOnly: true
+          - mountPath: /var/config/system/secrets/v4-0-config-system-router-certs
+            name: v4-0-config-system-router-certs
+            readOnly: true
+          - mountPath: /var/config/system/secrets/v4-0-config-system-ocp-branding-template
+            name: v4-0-config-system-ocp-branding-template
+            readOnly: true
+          - mountPath: /var/config/user/template/secret/v4-0-config-user-template-login
+            name: v4-0-config-user-template-login
+            readOnly: true
+          - mountPath: /var/config/user/template/secret/v4-0-config-user-template-provider-selection
+            name: v4-0-config-user-template-provider-selection
+            readOnly: true
+          - mountPath: /var/config/user/template/secret/v4-0-config-user-template-error
+            name: v4-0-config-user-template-error
+            readOnly: true
+          - mountPath: /var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle
+            name: v4-0-config-system-trusted-ca-bundle
+            readOnly: true
+          - mountPath: /var/config/user/idp/0/secret/v4-0-config-user-idp-0-client-secret
+            name: v4-0-config-user-idp-0-client-secret
+            readOnly: true
+        dnsPolicy: ClusterFirst
+        nodeSelector:
+          node-role.kubernetes.io/master: ""
+        priorityClassName: system-cluster-critical
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: oauth-openshift
+        serviceAccountName: oauth-openshift
+        terminationGracePeriodSeconds: 40
+        tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+          operator: Exists
+        - effect: NoExecute
+          key: node.kubernetes.io/unreachable
+          operator: Exists
+          tolerationSeconds: 120
+        - effect: NoExecute
+          key: node.kubernetes.io/not-ready
+          operator: Exists
+          tolerationSeconds: 120
+        volumes:
+        - configMap:
+            defaultMode: 420
+            name: audit
+          name: audit-policies
+        - hostPath:
+            path: /var/log/oauth-server
+            type: ""
+          name: audit-dir
+        - name: v4-0-config-system-session
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-session
+        - configMap:
+            defaultMode: 420
+            name: v4-0-config-system-cliconfig
+          name: v4-0-config-system-cliconfig
+        - name: v4-0-config-system-serving-cert
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-serving-cert
+        - configMap:
+            defaultMode: 420
+            name: v4-0-config-system-service-ca
+          name: v4-0-config-system-service-ca
+        - name: v4-0-config-system-router-certs
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-router-certs
+        - name: v4-0-config-system-ocp-branding-template
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-ocp-branding-template
+        - name: v4-0-config-user-template-login
+          secret:
+            defaultMode: 420
+            optional: true
+            secretName: v4-0-config-user-template-login
+        - name: v4-0-config-user-template-provider-selection
+          secret:
+            defaultMode: 420
+            optional: true
+            secretName: v4-0-config-user-template-provider-selection
+        - name: v4-0-config-user-template-error
+          secret:
+            defaultMode: 420
+            optional: true
+            secretName: v4-0-config-user-template-error
+        - configMap:
+            defaultMode: 420
+            name: v4-0-config-system-trusted-ca-bundle
+            optional: true
+          name: v4-0-config-system-trusted-ca-bundle
+        - name: v4-0-config-user-idp-0-client-secret
+          secret:
+            defaultMode: 420
+            items:
+            - key: clientSecret
+              path: clientSecret
+            secretName: v4-0-config-user-idp-0-client-secret
+  status:
+    observedGeneration: 7
+    replicas: 0
+- apiVersion: apps/v1
+  kind: ReplicaSet
+  metadata:
+    annotations:
+      deployment.kubernetes.io/desired-replicas: "3"
+      deployment.kubernetes.io/max-replicas: "3"
+      deployment.kubernetes.io/revision: "5"
+      operator.openshift.io/rvs-hash: zbEg2xKE74M3lS7iijo1gBDm0VySkJwo21JktJ3objKsWrzF_vvgLSNM96PUlbyhvq9dYvYKXps2ATHLCCKndA
+      operator.openshift.io/spec-hash: 09c0e078d7a579e1ebe26e5a2744dd1a2b43d90bf231e6b7ec45d8777e50a239
+    creationTimestamp: "2026-02-26T20:13:21Z"
+    generation: 3
+    labels:
+      app: oauth-openshift
+      oauth-openshift-anti-affinity: "true"
+      pod-template-hash: 9d48b7699
+    managedFields:
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:deployment.kubernetes.io/desired-replicas: {}
+            f:deployment.kubernetes.io/max-replicas: {}
+            f:deployment.kubernetes.io/revision: {}
+            f:operator.openshift.io/rvs-hash: {}
+            f:operator.openshift.io/spec-hash: {}
+          f:labels:
+            .: {}
+            f:app: {}
+            f:oauth-openshift-anti-affinity: {}
+            f:pod-template-hash: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"0b8ae633-ddde-458c-8773-f6b12b0d6696"}: {}
+        f:spec:
+          f:replicas: {}
+          f:selector: {}
+          f:template:
+            f:metadata:
+              f:annotations:
+                .: {}
+                f:openshift.io/required-scc: {}
+                f:operator.openshift.io/bootstrap-user-exists: {}
+                f:operator.openshift.io/rvs-hash: {}
+                f:target.workload.openshift.io/management: {}
+              f:labels:
+                .: {}
+                f:app: {}
+                f:oauth-openshift-anti-affinity: {}
+                f:pod-template-hash: {}
+              f:name: {}
+              f:namespace: {}
+            f:spec:
+              f:affinity:
+                .: {}
+                f:podAntiAffinity:
+                  .: {}
+                  f:requiredDuringSchedulingIgnoredDuringExecution: {}
+              f:containers:
+                k:{"name":"oauth-openshift"}:
+                  .: {}
+                  f:args: {}
+                  f:command: {}
+                  f:image: {}
+                  f:imagePullPolicy: {}
+                  f:lifecycle:
+                    .: {}
+                    f:preStop:
+                      .: {}
+                      f:exec:
+                        .: {}
+                        f:command: {}
+                  f:livenessProbe:
+                    .: {}
+                    f:failureThreshold: {}
+                    f:httpGet:
+                      .: {}
+                      f:path: {}
+                      f:port: {}
+                      f:scheme: {}
+                    f:initialDelaySeconds: {}
+                    f:periodSeconds: {}
+                    f:successThreshold: {}
+                    f:timeoutSeconds: {}
+                  f:name: {}
+                  f:ports:
+                    .: {}
+                    k:{"containerPort":6443,"protocol":"TCP"}:
+                      .: {}
+                      f:containerPort: {}
+                      f:name: {}
+                      f:protocol: {}
+                  f:readinessProbe:
+                    .: {}
+                    f:failureThreshold: {}
+                    f:httpGet:
+                      .: {}
+                      f:path: {}
+                      f:port: {}
+                      f:scheme: {}
+                    f:periodSeconds: {}
+                    f:successThreshold: {}
+                    f:timeoutSeconds: {}
+                  f:resources:
+                    .: {}
+                    f:requests:
+                      .: {}
+                      f:cpu: {}
+                      f:memory: {}
+                  f:securityContext:
+                    .: {}
+                    f:privileged: {}
+                    f:readOnlyRootFilesystem: {}
+                    f:runAsUser: {}
+                  f:terminationMessagePath: {}
+                  f:terminationMessagePolicy: {}
+                  f:volumeMounts:
+                    .: {}
+                    k:{"mountPath":"/var/config/system/configmaps/v4-0-config-system-cliconfig"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/configmaps/v4-0-config-system-service-ca"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-ocp-branding-template"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-router-certs"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-serving-cert"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/system/secrets/v4-0-config-system-session"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/idp/0/secret/v4-0-config-user-idp-0-client-secret"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/template/secret/v4-0-config-user-template-error"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/template/secret/v4-0-config-user-template-login"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/config/user/template/secret/v4-0-config-user-template-provider-selection"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                      f:readOnly: {}
+                    k:{"mountPath":"/var/log/oauth-server"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+                    k:{"mountPath":"/var/run/configmaps/audit"}:
+                      .: {}
+                      f:mountPath: {}
+                      f:name: {}
+              f:dnsPolicy: {}
+              f:nodeSelector: {}
+              f:priorityClassName: {}
+              f:restartPolicy: {}
+              f:schedulerName: {}
+              f:securityContext: {}
+              f:serviceAccount: {}
+              f:serviceAccountName: {}
+              f:terminationGracePeriodSeconds: {}
+              f:tolerations: {}
+              f:volumes:
+                .: {}
+                k:{"name":"audit-dir"}:
+                  .: {}
+                  f:hostPath:
+                    .: {}
+                    f:path: {}
+                    f:type: {}
+                  f:name: {}
+                k:{"name":"audit-policies"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-system-cliconfig"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-system-ocp-branding-template"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-router-certs"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-service-ca"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-system-serving-cert"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-session"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-system-trusted-ca-bundle"}:
+                  .: {}
+                  f:configMap:
+                    .: {}
+                    f:defaultMode: {}
+                    f:name: {}
+                    f:optional: {}
+                  f:name: {}
+                k:{"name":"v4-0-config-user-idp-0-client-secret"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:items: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-user-template-error"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:optional: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-user-template-login"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:optional: {}
+                    f:secretName: {}
+                k:{"name":"v4-0-config-user-template-provider-selection"}:
+                  .: {}
+                  f:name: {}
+                  f:secret:
+                    .: {}
+                    f:defaultMode: {}
+                    f:optional: {}
+                    f:secretName: {}
+      manager: kube-controller-manager
+      operation: Update
+      time: "2026-02-26T20:13:36Z"
+    - apiVersion: apps/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:observedGeneration: {}
+          f:replicas: {}
+      manager: kube-controller-manager
+      operation: Update
+      subresource: status
+      time: "2026-02-26T20:13:36Z"
+    name: oauth-openshift-9d48b7699
+    namespace: openshift-authentication
+    ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: Deployment
+      name: oauth-openshift
+      uid: 0b8ae633-ddde-458c-8773-f6b12b0d6696
+    resourceVersion: "32233"
+    uid: b64a841f-c79c-4de2-bda2-e3aaeb027a06
+  spec:
+    replicas: 0
+    selector:
+      matchLabels:
+        app: oauth-openshift
+        pod-template-hash: 9d48b7699
+    template:
+      metadata:
+        annotations:
+          openshift.io/required-scc: privileged
+          operator.openshift.io/bootstrap-user-exists: "true"
+          operator.openshift.io/rvs-hash: zbEg2xKE74M3lS7iijo1gBDm0VySkJwo21JktJ3objKsWrzF_vvgLSNM96PUlbyhvq9dYvYKXps2ATHLCCKndA
+          target.workload.openshift.io/management: '{"effect": "PreferredDuringScheduling"}'
+        creationTimestamp: null
+        labels:
+          app: oauth-openshift
+          oauth-openshift-anti-affinity: "true"
+          pod-template-hash: 9d48b7699
+        name: oauth-openshift
+        namespace: openshift-authentication
+      spec:
+        affinity:
+          podAntiAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  app: oauth-openshift
+                  oauth-openshift-anti-affinity: "true"
+              topologyKey: kubernetes.io/hostname
+        containers:
+        - args:
+          - |
+            if [ -s /var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle/ca-bundle.crt ]; then
+                echo "Copying system trust bundle"
+                cp -f /var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle/ca-bundle.crt /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
+            fi
+            exec oauth-server osinserver \
+            --config=/var/config/system/configmaps/v4-0-config-system-cliconfig/v4-0-config-system-cliconfig \
+            --v=2 \
+            --audit-log-format=json \
+            --audit-log-maxbackup=10 \
+            --audit-log-maxsize=100 \
+            --audit-log-path=/var/log/oauth-server/audit.log \
+            --audit-policy-file=/var/run/configmaps/audit/audit.yaml
+          command:
+          - /bin/bash
+          - -ec
+          image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:df950c8b195b2f391ebe096675e5d42db5c26b044968ceef46fad12d424a37b1
+          imagePullPolicy: IfNotPresent
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                - sleep
+                - "25"
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /healthz
+              port: 6443
+              scheme: HTTPS
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: oauth-openshift
+          ports:
+          - containerPort: 6443
+            name: https
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /healthz
+              port: 6443
+              scheme: HTTPS
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources:
+            requests:
+              cpu: 10m
+              memory: 50Mi
+          securityContext:
+            privileged: true
+            readOnlyRootFilesystem: false
+            runAsUser: 0
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: FallbackToLogsOnError
+          volumeMounts:
+          - mountPath: /var/run/configmaps/audit
+            name: audit-policies
+          - mountPath: /var/log/oauth-server
+            name: audit-dir
+          - mountPath: /var/config/system/secrets/v4-0-config-system-session
+            name: v4-0-config-system-session
+            readOnly: true
+          - mountPath: /var/config/system/configmaps/v4-0-config-system-cliconfig
+            name: v4-0-config-system-cliconfig
+            readOnly: true
+          - mountPath: /var/config/system/secrets/v4-0-config-system-serving-cert
+            name: v4-0-config-system-serving-cert
+            readOnly: true
+          - mountPath: /var/config/system/configmaps/v4-0-config-system-service-ca
+            name: v4-0-config-system-service-ca
+            readOnly: true
+          - mountPath: /var/config/system/secrets/v4-0-config-system-router-certs
+            name: v4-0-config-system-router-certs
+            readOnly: true
+          - mountPath: /var/config/system/secrets/v4-0-config-system-ocp-branding-template
+            name: v4-0-config-system-ocp-branding-template
+            readOnly: true
+          - mountPath: /var/config/user/template/secret/v4-0-config-user-template-login
+            name: v4-0-config-user-template-login
+            readOnly: true
+          - mountPath: /var/config/user/template/secret/v4-0-config-user-template-provider-selection
+            name: v4-0-config-user-template-provider-selection
+            readOnly: true
+          - mountPath: /var/config/user/template/secret/v4-0-config-user-template-error
+            name: v4-0-config-user-template-error
+            readOnly: true
+          - mountPath: /var/config/system/configmaps/v4-0-config-system-trusted-ca-bundle
+            name: v4-0-config-system-trusted-ca-bundle
+            readOnly: true
+          - mountPath: /var/config/user/idp/0/secret/v4-0-config-user-idp-0-client-secret
+            name: v4-0-config-user-idp-0-client-secret
+            readOnly: true
+        dnsPolicy: ClusterFirst
+        nodeSelector:
+          node-role.kubernetes.io/master: ""
+        priorityClassName: system-cluster-critical
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: oauth-openshift
+        serviceAccountName: oauth-openshift
+        terminationGracePeriodSeconds: 40
+        tolerations:
+        - effect: NoSchedule
+          key: node-role.kubernetes.io/master
+          operator: Exists
+        - effect: NoExecute
+          key: node.kubernetes.io/unreachable
+          operator: Exists
+          tolerationSeconds: 120
+        - effect: NoExecute
+          key: node.kubernetes.io/not-ready
+          operator: Exists
+          tolerationSeconds: 120
+        volumes:
+        - configMap:
+            defaultMode: 420
+            name: audit
+          name: audit-policies
+        - hostPath:
+            path: /var/log/oauth-server
+            type: ""
+          name: audit-dir
+        - name: v4-0-config-system-session
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-session
+        - configMap:
+            defaultMode: 420
+            name: v4-0-config-system-cliconfig
+          name: v4-0-config-system-cliconfig
+        - name: v4-0-config-system-serving-cert
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-serving-cert
+        - configMap:
+            defaultMode: 420
+            name: v4-0-config-system-service-ca
+          name: v4-0-config-system-service-ca
+        - name: v4-0-config-system-router-certs
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-router-certs
+        - name: v4-0-config-system-ocp-branding-template
+          secret:
+            defaultMode: 420
+            secretName: v4-0-config-system-ocp-branding-template
+        - name: v4-0-config-user-template-login
+          secret:
+            defaultMode: 420
+            optional: true
+            secretName: v4-0-config-user-template-login
+        - name: v4-0-config-user-template-provider-selection
+          secret:
+            defaultMode: 420
+            optional: true
+            secretName: v4-0-config-user-template-provider-selection
+        - name: v4-0-config-user-template-error
+          secret:
+            defaultMode: 420
+            optional: true
+            secretName: v4-0-config-user-template-error
+        - configMap:
+            defaultMode: 420
+            name: v4-0-config-system-trusted-ca-bundle
+            optional: true
+          name: v4-0-config-system-trusted-ca-bundle
+        - name: v4-0-config-user-idp-0-client-secret
+          secret:
+            defaultMode: 420
+            items:
+            - key: clientSecret
+              path: clientSecret
+            secretName: v4-0-config-user-idp-0-client-secret
+  status:
+    observedGeneration: 3
+    replicas: 0
+kind: ReplicaSetList
+metadata:
+  resourceVersion: "428032"

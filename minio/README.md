@@ -2,7 +2,7 @@
 
 ~~~ bash
 
-oc new-project quay-poc
+oc new-project minio
 
 ~~~
 
@@ -11,6 +11,12 @@ oc new-project quay-poc
 
 ~~~ bash
 cp values.yaml myvalues.yaml
+~~~
+
+## Modify cluster domain 
+
+~~~ bash
+sed -i '' "s|domain:.*|domain: $(oc get ingresscontroller default -n openshift-ingress-operator -o jsonpath='{.status.domain}')|" myvalues.yaml
 ~~~
 
 ## Install

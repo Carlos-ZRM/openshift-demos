@@ -12,6 +12,7 @@ minio_config:
   secret:
     access_key: minio
     secret_key: minio123.
+    bucket: mybucket
   resources:
     limits:
       cpu: 250m
@@ -19,6 +20,8 @@ minio_config:
     requests:
       cpu: 20m
       memory: 100Mi
-  bucket: quay-tam
   region: us-east-1
   use_ssl: "false"
+
+ocp_config:
+  domain: cluster.local
