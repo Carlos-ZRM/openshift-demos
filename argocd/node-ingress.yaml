@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: kfp-server
+  name: node-ingress-operator
   namespace: openshift-gitops
 spec:
   project: default
   sources:
-    - repoURL: 'https://gitlab.com/xpk/openshift-apps.git'
-      path: k8s/infra/kfp
+    - repoURL: 'git@gitlab.com:xpk/openshift-apps.git'
+      path: node-ingress-firewall-kustomize/overlays/dev
       targetRevision: main
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: rag-llm-demo
+    namespace: openshift-ingress-node-firewall
   syncPolicy:
     automated:
       prune: true        # elimina recursos que ya no están en Git
